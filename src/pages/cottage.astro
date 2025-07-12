@@ -106,10 +106,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 
   <!-- Sticky Book Now Banner for Mobile -->
-  <div class="sticky-book-banner">
-    <a href="https://book.nightsbridge.com/12344" target="_blank" class="btn btn-large">
-      Check Availability & Book Now
-    </a>
+  <div class="sticky-book-banner" id="sticky-banner">
+    <div class="banner-content">
+      <a href="https://book.nightsbridge.com/12344" target="_blank" class="btn btn-large">
+        Check Availability & Book Now
+      </a>
+      <button class="banner-close" aria-label="Close banner" id="banner-close">✕</button>
+    </div>
   </div>
 
   <script>
@@ -226,8 +229,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const image = slide.querySelector('img') as HTMLImageElement;
         
         if (modalImage && image) {
-          modalImage.src = image.src;
-          modalImage.alt = image.alt;
+          (modalImage as HTMLImageElement).src = image.src;
+          (modalImage as HTMLImageElement).alt = image.alt;
         }
         
         if (modal) {
@@ -236,7 +239,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         }
         document.body.style.overflow = 'hidden';
         
-        if (closeBtn) closeBtn.focus();
+        if (closeBtn) (closeBtn as HTMLElement).focus();
       }
 
       function closeModal() {
@@ -256,8 +259,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const image = slide.querySelector('img') as HTMLImageElement;
         
         if (modalImage && image) {
-          modalImage.src = image.src;
-          modalImage.alt = image.alt;
+          (modalImage as HTMLImageElement).src = image.src;
+          (modalImage as HTMLImageElement).alt = image.alt;
         }
       }
 
@@ -330,6 +333,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       // Initialize carousel
       initCarousel();
+
+      // Sticky banner functionality
+      const stickyBanner = document.getElementById('sticky-banner');
+      const bannerClose = document.getElementById('banner-close');
+      const bookingSection = document.querySelector('.booking-section');
+
+      if (stickyBanner && bannerClose && bookingSection) {
+        // Helper function to check if we're on mobile
+        const isMobile = () => window.innerWidth <= 768;
+
+        // Close banner functionality
+        bannerClose.addEventListener('click', () => {
+          stickyBanner.style.display = 'none';
+          // Store preference in localStorage
+          localStorage.setItem('banner-closed', 'true');
+        });
+
+        // Check if banner was previously closed
+        if (localStorage.getItem('banner-closed') === 'true') {
+          stickyBanner.style.display = 'none';
+        }
+
+        // Intersection Observer to hide banner when booking section is visible
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              stickyBanner.style.display = 'none';
+            } else {
+              // Only show banner on mobile and if it wasn't manually closed
+              if (isMobile() && localStorage.getItem('banner-closed') !== 'true') {
+                stickyBanner.style.display = 'block';
+              }
+            }
+          });
+        }, {
+          threshold: 0.1 // Trigger when 10% of booking section is visible
+        });
+
+        observer.observe(bookingSection);
+
+        // Handle window resize to show/hide banner appropriately
+        window.addEventListener('resize', () => {
+          if (!isMobile()) {
+            stickyBanner.style.display = 'none';
+          } else if (localStorage.getItem('banner-closed') !== 'true') {
+            stickyBanner.style.display = 'block';
+          }
+        });
+      }
     });
   </script>
 </BaseLayout> 
