@@ -8,16 +8,57 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 >
   <div class="container">
     <h1>Clarkia Cottage</h1>
-    <div class="gallery" id="gallery">
-      <img src="/src/assets/front-garden-2.jpg" alt="Private garden and outdoor space" data-index="0" class="gallery-image" />
-      <img src="/src/assets/living-room-1.jpg" alt="Living room with comfortable seating area" data-index="1" class="gallery-image" />
-      <img src="/src/assets/kitchen-1.jpg" alt="Fully equipped kitchen with modern appliances" data-index="2" class="gallery-image" />
-      <img src="/src/assets/fireplace.jpg" alt="Cozy fireplace in the living area" data-index="3" class="gallery-image" />
-      <img src="/src/assets/main-bedroom-1.jpg" alt="Main bedroom with king-size bed" data-index="4" class="gallery-image" />
-      <img src="/src/assets/second-bedroom-1.jpg" alt="Second bedroom with twin beds" data-index="5" class="gallery-image" />
-      <img src="/src/assets/hallway.jpg" alt="Welcoming hallway entrance" data-index="6" class="gallery-image" />
-      <img src="/src/assets/en-suite-bathroom-1.jpg" alt="En-suite bathroom with shower and modern fittings" data-index="7" class="gallery-image" />
-      <img src="/src/assets/separate-bathroom-1.jpg" alt="Separate bathroom with shower" data-index="8" class="gallery-image" />
+    
+    <!-- Mobile Carousel Gallery -->
+    <div class="carousel-container">
+      <div class="carousel" id="carousel">
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-slide">
+            <img src="/src/assets/front-garden-2.jpg" alt="Private garden and outdoor space" class="carousel-image" />
+          </div>
+          <div class="carousel-slide">
+            <img src="/src/assets/living-room-1.jpg" alt="Living room with comfortable seating area" class="carousel-image" />
+          </div>
+          <div class="carousel-slide">
+            <img src="/src/assets/kitchen-1.jpg" alt="Fully equipped kitchen with modern appliances" class="carousel-image" />
+          </div>
+          <div class="carousel-slide">
+            <img src="/src/assets/fireplace.jpg" alt="Cozy fireplace in the living area" class="carousel-image" />
+          </div>
+          <div class="carousel-slide">
+            <img src="/src/assets/main-bedroom-1.jpg" alt="Main bedroom with king-size bed" class="carousel-image" />
+          </div>
+          <div class="carousel-slide">
+            <img src="/src/assets/second-bedroom-1.jpg" alt="Second bedroom with twin beds" class="carousel-image" />
+          </div>
+          <div class="carousel-slide">
+            <img src="/src/assets/hallway.jpg" alt="Welcoming hallway entrance" class="carousel-image" />
+          </div>
+          <div class="carousel-slide">
+            <img src="/src/assets/en-suite-bathroom-1.jpg" alt="En-suite bathroom with shower and modern fittings" class="carousel-image" />
+          </div>
+          <div class="carousel-slide">
+            <img src="/src/assets/separate-bathroom-1.jpg" alt="Separate bathroom with shower" class="carousel-image" />
+          </div>
+        </div>
+        
+        <!-- Navigation Arrows -->
+        <button class="carousel-nav carousel-prev" aria-label="Previous image">‹</button>
+        <button class="carousel-nav carousel-next" aria-label="Next image">›</button>
+        
+        <!-- Dot Indicators -->
+        <div class="carousel-dots" id="carousel-dots">
+          <button class="carousel-dot active" aria-label="Go to image 1" data-index="0"></button>
+          <button class="carousel-dot" aria-label="Go to image 2" data-index="1"></button>
+          <button class="carousel-dot" aria-label="Go to image 3" data-index="2"></button>
+          <button class="carousel-dot" aria-label="Go to image 4" data-index="3"></button>
+          <button class="carousel-dot" aria-label="Go to image 5" data-index="4"></button>
+          <button class="carousel-dot" aria-label="Go to image 6" data-index="5"></button>
+          <button class="carousel-dot" aria-label="Go to image 7" data-index="6"></button>
+          <button class="carousel-dot" aria-label="Go to image 8" data-index="7"></button>
+          <button class="carousel-dot" aria-label="Go to image 9" data-index="8"></button>
+        </div>
+      </div>
     </div>
     
     <section>
@@ -72,71 +113,179 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 
   <script>
-    // Gallery carousel functionality
+    // Carousel functionality
     document.addEventListener('DOMContentLoaded', function() {
-      const gallery = document.getElementById('gallery');
+      const carousel = document.getElementById('carousel');
+      const track = document.getElementById('carousel-track');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const dots = document.querySelectorAll('.carousel-dot');
+      const prevBtn = document.querySelector('.carousel-prev');
+      const nextBtn = document.querySelector('.carousel-next');
       const modal = document.getElementById('gallery-modal');
       const modalImage = document.getElementById('modal-image');
       const closeBtn = document.querySelector('.modal-close');
-      const prevBtn = document.querySelector('.prev-btn');
-      const nextBtn = document.querySelector('.next-btn');
-      const galleryImages = document.querySelectorAll('.gallery-image');
+      const modalPrevBtn = document.querySelector('.prev-btn');
+      const modalNextBtn = document.querySelector('.next-btn');
 
-      if (!gallery || !modal || !modalImage || !closeBtn || !prevBtn || !nextBtn) {
-        console.error('Required gallery elements not found');
+      if (!carousel || !track || !slides.length || !dots.length || !prevBtn || !nextBtn) {
+        console.error('Required carousel elements not found');
         return;
       }
 
       let currentIndex = 0;
-      const images = Array.from(galleryImages);
+      const totalSlides = slides.length;
+      let isDragging = false;
+      let startPos = 0;
+      let currentTranslate = 0;
+      let prevTranslate = 0;
 
+      // Initialize carousel
+      function initCarousel() {
+        updateCarousel();
+        updateDots();
+      }
+
+      // Update carousel position
+      function updateCarousel() {
+        if (!track || !slides[0]) return;
+        const slideWidth = (slides[0] as HTMLElement).offsetWidth;
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+      }
+
+      // Update dot indicators
+      function updateDots() {
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+      }
+
+      // Go to specific slide
+      function goToSlide(index: number) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        
+        currentIndex = index;
+        updateCarousel();
+        updateDots();
+      }
+
+      // Next slide
+      function nextSlide() {
+        goToSlide(currentIndex + 1);
+      }
+
+      // Previous slide
+      function prevSlide() {
+        goToSlide(currentIndex - 1);
+      }
+
+      // Touch/swipe functionality
+      function handleTouchStart(e: TouchEvent) {
+        if (!track) return;
+        isDragging = true;
+        startPos = e.touches[0].clientX;
+        track.style.transition = 'none';
+      }
+
+      function handleTouchMove(e: TouchEvent) {
+        if (!isDragging || !track) return;
+        
+        const currentPos = e.touches[0].clientX;
+        const diff = currentPos - startPos;
+        currentTranslate = prevTranslate + diff;
+        
+        track.style.transform = `translateX(${currentTranslate}px)`;
+      }
+
+      function handleTouchEnd() {
+        if (!isDragging || !track || !slides[0]) return;
+        
+        isDragging = false;
+        track.style.transition = 'transform 0.3s ease';
+        
+        const slideWidth = (slides[0] as HTMLElement).offsetWidth;
+        const threshold = slideWidth * 0.3;
+        
+        if (Math.abs(currentTranslate - prevTranslate) > threshold) {
+          if (currentTranslate > prevTranslate) {
+            prevSlide();
+          } else {
+            nextSlide();
+          }
+        } else {
+          updateCarousel();
+        }
+        
+        prevTranslate = currentTranslate;
+      }
+
+      // Modal functionality
       function openModal(index: number) {
         currentIndex = index;
-        const image = images[index] as HTMLImageElement;
-        if (modalImage) {
+        const slide = slides[index] as HTMLElement;
+        const image = slide.querySelector('img') as HTMLImageElement;
+        
+        if (modalImage && image) {
           modalImage.src = image.src;
           modalImage.alt = image.alt;
         }
+        
         if (modal) {
           modal.setAttribute('aria-hidden', 'false');
           modal.classList.add('active');
         }
         document.body.style.overflow = 'hidden';
         
-        // Focus management
         if (closeBtn) closeBtn.focus();
       }
 
       function closeModal() {
-        modal.setAttribute('aria-hidden', 'true');
-        modal.classList.remove('active');
+        if (modal) {
+          modal.setAttribute('aria-hidden', 'true');
+          modal.classList.remove('active');
+        }
         document.body.style.overflow = '';
       }
 
-      function showImage(index: number) {
-        if (index < 0) index = images.length - 1;
-        if (index >= images.length) index = 0;
+      function showModalImage(index: number) {
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
         
         currentIndex = index;
-        const image = images[index] as HTMLImageElement;
-        if (modalImage) {
+        const slide = slides[index] as HTMLElement;
+        const image = slide.querySelector('img') as HTMLImageElement;
+        
+        if (modalImage && image) {
           modalImage.src = image.src;
           modalImage.alt = image.alt;
         }
       }
 
-      function nextImage() {
-        showImage(currentIndex + 1);
+      function nextModalImage() {
+        showModalImage(currentIndex + 1);
       }
 
-      function prevImage() {
-        showImage(currentIndex - 1);
+      function prevModalImage() {
+        showModalImage(currentIndex - 1);
       }
 
       // Event listeners
-      galleryImages.forEach((image, index) => {
-        image.addEventListener('click', () => openModal(index));
-        image.addEventListener('keydown', (e) => {
+      prevBtn.addEventListener('click', prevSlide);
+      nextBtn.addEventListener('click', nextSlide);
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToSlide(index));
+      });
+
+      // Touch events for carousel
+      track.addEventListener('touchstart', handleTouchStart);
+      track.addEventListener('touchmove', handleTouchMove);
+      track.addEventListener('touchend', handleTouchEnd);
+
+      // Click to enlarge functionality
+      slides.forEach((slide, index) => {
+        slide.addEventListener('click', () => openModal(index));
+        slide.addEventListener('keydown', (e) => {
           const keyboardEvent = e as KeyboardEvent;
           if (keyboardEvent.key === 'Enter' || keyboardEvent.key === ' ') {
             e.preventDefault();
@@ -145,48 +294,42 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         });
       });
 
-      closeBtn.addEventListener('click', closeModal);
-      prevBtn.addEventListener('click', prevImage);
-      nextBtn.addEventListener('click', nextImage);
+      // Modal event listeners
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (modalPrevBtn) modalPrevBtn.addEventListener('click', prevModalImage);
+      if (modalNextBtn) modalNextBtn.addEventListener('click', nextModalImage);
 
       // Close modal when clicking outside
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          closeModal();
-        }
-      });
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+      }
 
       // Keyboard navigation
       document.addEventListener('keydown', (e) => {
-        if (!modal.classList.contains('active')) return;
-        
-        switch (e.key) {
-          case 'Escape':
-            closeModal();
-            break;
-          case 'ArrowLeft':
-            prevImage();
-            break;
-          case 'ArrowRight':
-            nextImage();
-            break;
+        if (modal && modal.classList.contains('active')) {
+          switch (e.key) {
+            case 'Escape':
+              closeModal();
+              break;
+            case 'ArrowLeft':
+              prevModalImage();
+              break;
+            case 'ArrowRight':
+              nextModalImage();
+              break;
+          }
         }
       });
 
-      // Lazy loading for modal images
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target as HTMLImageElement;
-            img.src = img.dataset.src || img.src;
-            observer.unobserve(img);
-          }
-        });
-      });
+      // Handle window resize
+      window.addEventListener('resize', updateCarousel);
 
-      galleryImages.forEach(img => {
-        observer.observe(img);
-      });
+      // Initialize carousel
+      initCarousel();
     });
   </script>
 </BaseLayout> 
