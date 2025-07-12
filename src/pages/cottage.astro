@@ -9,11 +9,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="container">
     <h1>Clarkia Guest Cottage</h1>
     
-    <div class="gallery">
-      <img src="https://via.placeholder.com/600x400" alt="Cottage exterior view" />
-      <img src="https://via.placeholder.com/600x400" alt="Living room with fireplace" />
-      <img src="https://via.placeholder.com/600x400" alt="Kitchen and dining area" />
-      <img src="https://via.placeholder.com/600x400" alt="Private garden and patio" />
+    <div class="gallery" id="gallery">
+      <img src="https://via.placeholder.com/600x400" alt="Cottage exterior view" data-index="0" class="gallery-image" />
+      <img src="https://via.placeholder.com/600x400" alt="Living room with fireplace" data-index="1" class="gallery-image" />
+      <img src="https://via.placeholder.com/600x400" alt="Kitchen and dining area" data-index="2" class="gallery-image" />
+      <img src="https://via.placeholder.com/600x400" alt="Private garden and patio" data-index="3" class="gallery-image" />
     </div>
     
     <section>
@@ -43,4 +43,144 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </a>
     </section>
   </div>
+
+  <!-- Image Gallery Modal -->
+  <div id="gallery-modal" class="gallery-modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close gallery">✕</button>
+      <div class="modal-image-container">
+        <img id="modal-image" src="" alt="" class="modal-image" />
+      </div>
+      <div class="modal-navigation">
+        <button class="nav-btn prev-btn" aria-label="Previous image">‹</button>
+        <button class="nav-btn next-btn" aria-label="Next image">›</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Book Now Banner for Mobile -->
+  <div class="sticky-book-banner">
+    <a href="https://book.nightsbridge.com/12344" target="_blank" class="btn btn-large">
+      Check Availability & Book Now
+    </a>
+  </div>
+
+  <script>
+    // Gallery carousel functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const gallery = document.getElementById('gallery');
+      const modal = document.getElementById('gallery-modal');
+      const modalImage = document.getElementById('modal-image');
+      const closeBtn = document.querySelector('.modal-close');
+      const prevBtn = document.querySelector('.prev-btn');
+      const nextBtn = document.querySelector('.next-btn');
+      const galleryImages = document.querySelectorAll('.gallery-image');
+
+      if (!gallery || !modal || !modalImage || !closeBtn || !prevBtn || !nextBtn) {
+        console.error('Required gallery elements not found');
+        return;
+      }
+
+      let currentIndex = 0;
+      const images = Array.from(galleryImages);
+
+      function openModal(index: number) {
+        currentIndex = index;
+        const image = images[index] as HTMLImageElement;
+        if (modalImage) {
+          modalImage.src = image.src;
+          modalImage.alt = image.alt;
+        }
+        if (modal) {
+          modal.setAttribute('aria-hidden', 'false');
+          modal.classList.add('active');
+        }
+        document.body.style.overflow = 'hidden';
+        
+        // Focus management
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeModal() {
+        modal.setAttribute('aria-hidden', 'true');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      function showImage(index: number) {
+        if (index < 0) index = images.length - 1;
+        if (index >= images.length) index = 0;
+        
+        currentIndex = index;
+        const image = images[index] as HTMLImageElement;
+        if (modalImage) {
+          modalImage.src = image.src;
+          modalImage.alt = image.alt;
+        }
+      }
+
+      function nextImage() {
+        showImage(currentIndex + 1);
+      }
+
+      function prevImage() {
+        showImage(currentIndex - 1);
+      }
+
+      // Event listeners
+      galleryImages.forEach((image, index) => {
+        image.addEventListener('click', () => openModal(index));
+        image.addEventListener('keydown', (e) => {
+          const keyboardEvent = e as KeyboardEvent;
+          if (keyboardEvent.key === 'Enter' || keyboardEvent.key === ' ') {
+            e.preventDefault();
+            openModal(index);
+          }
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      prevBtn.addEventListener('click', prevImage);
+      nextBtn.addEventListener('click', nextImage);
+
+      // Close modal when clicking outside
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('active')) return;
+        
+        switch (e.key) {
+          case 'Escape':
+            closeModal();
+            break;
+          case 'ArrowLeft':
+            prevImage();
+            break;
+          case 'ArrowRight':
+            nextImage();
+            break;
+        }
+      });
+
+      // Lazy loading for modal images
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target as HTMLImageElement;
+            img.src = img.dataset.src || img.src;
+            observer.unobserve(img);
+          }
+        });
+      });
+
+      galleryImages.forEach(img => {
+        observer.observe(img);
+      });
+    });
+  </script>
 </BaseLayout> 

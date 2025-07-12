@@ -24,15 +24,31 @@ const { title, description } = Astro.props;
           <div class="logo">
             <a href="/">Newlands Cottages</a>
           </div>
-          <nav>
+          <nav class="desktop-nav">
             <ul>
               <li><a href="/">Home</a></li>
               <li><a href="/cottage">Clarkia Cottage</a></li>
             </ul>
           </nav>
+          <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+            <span class="hamburger-icon">☰</span>
+          </button>
         </div>
       </div>
     </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-nav" class="mobile-nav-overlay" aria-hidden="true">
+      <div class="mobile-nav-content">
+        <button class="close-nav" aria-label="Close navigation menu">✕</button>
+        <nav class="mobile-nav">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/cottage">Clarkia Cottage</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
 
     <main>
       <slot />
@@ -50,5 +66,63 @@ const { title, description } = Astro.props;
         </div>
       </div>
     </footer>
+
+    <script>
+      // Hamburger menu functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger-menu') as HTMLButtonElement;
+        const mobileNav = document.getElementById('mobile-nav') as HTMLDivElement;
+        const closeNav = document.querySelector('.close-nav') as HTMLButtonElement;
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+
+        if (!hamburger || !mobileNav || !closeNav) {
+          console.error('Required navigation elements not found');
+          return;
+        }
+
+        function toggleNav() {
+          const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+          hamburger.setAttribute('aria-expanded', (!isExpanded).toString());
+          mobileNav.setAttribute('aria-hidden', isExpanded.toString());
+          
+          if (!isExpanded) {
+            mobileNav.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          } else {
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        }
+
+        function closeMobileNav() {
+          hamburger.setAttribute('aria-expanded', 'false');
+          mobileNav.setAttribute('aria-hidden', 'true');
+          mobileNav.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+
+        hamburger.addEventListener('click', toggleNav);
+        closeNav.addEventListener('click', closeMobileNav);
+
+        // Close nav when clicking on a link
+        mobileNavLinks.forEach(link => {
+          link.addEventListener('click', closeMobileNav);
+        });
+
+        // Close nav when clicking outside
+        mobileNav.addEventListener('click', function(e) {
+          if (e.target === mobileNav) {
+            closeMobileNav();
+          }
+        });
+
+        // Close nav on escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+            closeMobileNav();
+          }
+        });
+      });
+    </script>
   </body>
 </html> 
