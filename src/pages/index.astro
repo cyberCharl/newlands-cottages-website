@@ -1,8 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <BaseLayout 
@@ -13,7 +11,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="hero-content">
       <h1>Your Private Escape in Newlands</h1>
       <p>A serene, fully-equipped cottage offering comfort and tranquility.</p>
-      <a href="/cottage" class="btn btn-large">View The Cottage</a>
+      <div class="hero-buttons">
+        <a href="/cottage" class="btn btn-large">View The Cottage</a>
+        <a href="https://book.nightsbridge.com/12344" target="_blank" class="btn btn-large">Book Now</a>
+      </div>
     </div>
   </div>
 </BaseLayout>
