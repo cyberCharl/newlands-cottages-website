@@ -1,5 +1,15 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import frontGarden2 from '../assets/front-garden-2.jpg';
+import livingRoom1 from '../assets/living-room-1.jpg';
+import kitchen1 from '../assets/kitchen-1.jpg';
+import fireplace from '../assets/fireplace.jpg';
+import mainBedroom1 from '../assets/main-bedroom-1.jpg';
+import secondBedroom1 from '../assets/second-bedroom-1.jpg';
+import hallway from '../assets/hallway.jpg';
+import enSuiteBathroom1 from '../assets/en-suite-bathroom-1.jpg';
+import separateBathroom1 from '../assets/separate-bathroom-1.jpg';
 ---
 
 <BaseLayout 
@@ -14,31 +24,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="carousel" id="carousel">
         <div class="carousel-track" id="carousel-track">
           <div class="carousel-slide">
-            <img src="/src/assets/front-garden-2.jpg" alt="Private garden and outdoor space" class="carousel-image" />
+            <Image src={frontGarden2} alt="Private garden and outdoor space" class="carousel-image" />
           </div>
           <div class="carousel-slide">
-            <img src="/src/assets/living-room-1.jpg" alt="Living room with comfortable seating area" class="carousel-image" />
+            <Image src={livingRoom1} alt="Living room with comfortable seating area" class="carousel-image" />
           </div>
           <div class="carousel-slide">
-            <img src="/src/assets/kitchen-1.jpg" alt="Fully equipped kitchen with modern appliances" class="carousel-image" />
+            <Image src={kitchen1} alt="Fully equipped kitchen with modern appliances" class="carousel-image" />
           </div>
           <div class="carousel-slide">
-            <img src="/src/assets/fireplace.jpg" alt="Cozy fireplace in the living area" class="carousel-image" />
+            <Image src={fireplace} alt="Cozy fireplace in the living area" class="carousel-image" />
           </div>
           <div class="carousel-slide">
-            <img src="/src/assets/main-bedroom-1.jpg" alt="Main bedroom with king-size bed" class="carousel-image" />
+            <Image src={mainBedroom1} alt="Main bedroom with king-size bed" class="carousel-image" />
           </div>
           <div class="carousel-slide">
-            <img src="/src/assets/second-bedroom-1.jpg" alt="Second bedroom with twin beds" class="carousel-image" />
+            <Image src={secondBedroom1} alt="Second bedroom with twin beds" class="carousel-image" />
           </div>
           <div class="carousel-slide">
-            <img src="/src/assets/hallway.jpg" alt="Welcoming hallway entrance" class="carousel-image" />
+            <Image src={hallway} alt="Welcoming hallway entrance" class="carousel-image" />
           </div>
           <div class="carousel-slide">
-            <img src="/src/assets/en-suite-bathroom-1.jpg" alt="En-suite bathroom with shower and modern fittings" class="carousel-image" />
+            <Image src={enSuiteBathroom1} alt="En-suite bathroom with shower and modern fittings" class="carousel-image" />
           </div>
           <div class="carousel-slide">
-            <img src="/src/assets/separate-bathroom-1.jpg" alt="Separate bathroom with shower" class="carousel-image" />
+            <Image src={separateBathroom1} alt="Separate bathroom with shower" class="carousel-image" />
           </div>
         </div>
         
@@ -229,6 +239,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const image = slide.querySelector('img') as HTMLImageElement;
         
         if (modalImage && image) {
+          // For Astro Image components, we need to get the src from the img element that Astro generates
           (modalImage as HTMLImageElement).src = image.src;
           (modalImage as HTMLImageElement).alt = image.alt;
         }
@@ -259,6 +270,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         const image = slide.querySelector('img') as HTMLImageElement;
         
         if (modalImage && image) {
+          // For Astro Image components, we need to get the src from the img element that Astro generates
           (modalImage as HTMLImageElement).src = image.src;
           (modalImage as HTMLImageElement).alt = image.alt;
         }

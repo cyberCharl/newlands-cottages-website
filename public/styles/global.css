@@ -108,6 +108,13 @@ header {
   color: #004d40;
 }
 
+.logo-img {
+  height: 40px;
+  width: auto;
+  vertical-align: middle;
+  display: inline-block;
+}
+
 /* Desktop Navigation */
 .desktop-nav ul {
   display: flex;
