@@ -1,4 +1,5 @@
 ---
+import '../styles/global.css'
 import { Image } from 'astro:assets';
 import logo from '../assets/logo.png';
 
@@ -25,15 +26,15 @@ const { title, description } = Astro.props;
       <div class="container">
         <div class="header-content">
           <div class="logo">
-            <a href="/newlands-cottages-website/">
+            <a href="/">
               <Image src={logo} alt="Newlands Cottages Logo" class="logo-img" />
               Newlands Cottages
             </a>
           </div>
           <nav class="desktop-nav">
             <ul>
-              <li><a href="/newlands-cottages-website/">Home</a></li>
-              <li><a href="/newlands-cottages-website/clarkia-guest-cottage">Clarkia Cottage</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/clarkia-guest-cottage">Clarkia Cottage</a></li>
             </ul>
           </nav>
           <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
