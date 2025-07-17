@@ -83,7 +83,7 @@ import BookBanner from '../components/book-banner.astro';
         </div>
       </div>
     </section>
-    <section class="mb-16 flex justify-center">
+    <section class="flex justify-center">
       <a
         href="https://book.nightsbridge.com/12344"
         target="_blank"
@@ -102,42 +102,4 @@ import BookBanner from '../components/book-banner.astro';
 
   <!-- Sticky Book Now Banner for Mobile -->
   <BookBanner />
-  <!-- <div
-    class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 shadow-lg flex items-center justify-between px-4 py-3"
-    id="sticky-banner"
-  >
-    <a
-      href="https://book.nightsbridge.com/12344"
-      target="_blank"
-      rel="noopener"
-      class="flex-1"
-    >
-      <button type="button" class="btn btn-primary w-full text-base">
-        Check Availability & Book Now
-      </button>
-    </a>
-    <button
-      class="ml-4 text-gray-400 hover:text-gray-700 focus:outline-none"
-      aria-label="Close banner"
-      id="banner-close"
-    >
-      &#10005;
-    </button>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const stickyBanner = document.getElementById('sticky-banner');
-      const bannerClose = document.getElementById('banner-close');
-      if (stickyBanner && bannerClose) {
-        bannerClose.addEventListener('click', () => {
-          stickyBanner.style.display = 'none';
-          localStorage.setItem('banner-closed', 'true');
-        });
-        if (localStorage.getItem('banner-closed') === 'true') {
-          stickyBanner.style.display = 'none';
-        }
-      }
-    });
-  </script> -->
 </BaseLayout>
