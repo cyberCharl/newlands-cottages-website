@@ -7,7 +7,7 @@
 
 /* Custom button styles to match old global.css */
 .btn {
-  @apply inline-block bg-emerald-900 text-white px-6 py-3 rounded-md font-medium transition-colors duration-300 border-none cursor-pointer text-base shadow-sm hover:bg-emerald-950 hover:text-white;
+  @apply inline-block bg-emerald-900 text-white px-6 py-3 rounded-md font-medium transition-colors duration-300 border-none cursor-pointer text-base shadow-md hover:bg-emerald-950 hover:text-white;
 }
 .btn-large {
   @apply px-8 py-4 text-lg;

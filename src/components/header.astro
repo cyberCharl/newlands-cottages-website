@@ -4,12 +4,19 @@ import logo from '../assets/logo.png';
 
 <nav class="header-shadow">
   <div
-    class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 px-4"
+    class="max-w-screen-xl flex flex-nowrap items-center justify-between mx-auto py-4 px-2 sm:px-4"
   >
-    <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src={logo.src} class="h-10 w-auto" alt="Newlands Cottages Logo" />
+    <a
+      href="/"
+      class="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse"
+    >
+      <img
+        src={logo.src}
+        class="h-8 sm:h-10 w-auto"
+        alt="Newlands Cottages Logo"
+      />
       <span
-        class="self-center text-2xl font-bold whitespace-nowrap text-emerald-900"
+        class="self-center text-lg sm:text-2xl font-bold whitespace-nowrap text-emerald-900"
         >Newlands Cottages</span
       >
     </a>

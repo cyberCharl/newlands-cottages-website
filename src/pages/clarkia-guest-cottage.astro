@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Carousel from '../components/carousel.astro';
+import BookBanner from '../components/book-banner.astro';
 ---
 
 <BaseLayout
@@ -100,7 +101,8 @@ import Carousel from '../components/carousel.astro';
   </div>
 
   <!-- Sticky Book Now Banner for Mobile -->
-  <div
+  <BookBanner />
+  <!-- <div
     class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 shadow-lg flex items-center justify-between px-4 py-3"
     id="sticky-banner"
   >
@@ -137,5 +139,5 @@ import Carousel from '../components/carousel.astro';
         }
       }
     });
-  </script>
+  </script> -->
 </BaseLayout>
