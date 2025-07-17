@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Carousel from '../components/carousel.astro';
-import BookBanner from '../components/book-banner.astro';
+import ImageCarousel from '../components/ImageCarousel.astro';
+import BookBanner from '../components/BookBanner.astro';
+import AmenitiesSection from '../components/AmenitiesSection.astro';
 ---
 
 <BaseLayout
@@ -11,7 +12,7 @@ import BookBanner from '../components/book-banner.astro';
   <div class="max-w-3xl mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold mb-6 text-center">Clarkia Cottage</h1>
     <div class="mb-8">
-      <Carousel />
+      <ImageCarousel />
     </div>
     <section class="mb-10">
       <h2 class="text-2xl font-semibold mb-4">About the Space</h2>
@@ -37,50 +38,47 @@ import BookBanner from '../components/book-banner.astro';
     <section class="mb-10">
       <h2 class="text-2xl font-semibold mb-4">Amenities</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <h3 class="font-semibold text-lg mb-2">Kitchen & Dining:</h3>
-          <ul class="list-disc list-inside text-gray-700 space-y-1">
-            <li>Fully-equipped Kitchenette</li>
-            <li>Full-size Fridge/Freezer</li>
-            <li>Two-ring Gas Hob</li>
-            <li>Convection/Microwave Oven & Air Fryer</li>
-            <li>Nespresso Machine, Kettle & Toaster</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold text-lg mb-2">Bedrooms:</h3>
-          <ul class="list-disc list-inside text-gray-700 space-y-1">
-            <li>Main Bedroom: King-size Bed</li>
-            <li>Second Bedroom: Two Single Beds</li>
-            <li>En-suite for Main Bedroom</li>
-            <li>Second, Shower Only Bathroom</li>
-            <li>Towels Provided</li>
-            <li>Hairdryer</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold text-lg mb-2">Comfort & Convenience:</h3>
-          <ul class="list-disc list-inside text-gray-700 space-y-1">
-            <li>High-speed Fibre Wi-Fi</li>
-            <li>
-              Inverter & Battery Powered Lights (ensures 24/7 internet and
-              lights)
-            </li>
-            <li>Smart TV with Netflix</li>
-            <li>Combustion Wood Fireplace</li>
-            <li>Full Alarm System</li>
-            <li>Ironing Board & Iron</li>
-            <li>Camping Cot (available on request)</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="font-semibold text-lg mb-2">Outdoor & Parking:</h3>
-          <ul class="list-disc list-inside text-gray-700 space-y-1">
-            <li>Front Garden with wooden deck</li>
-            <li>Private Back Patio with Weber Braai</li>
-            <li>Dedicated Off-street Parking Verge for one vehicle</li>
-          </ul>
-        </div>
+        <AmenitiesSection
+          heading="Kitchen & Dining:"
+          items={[
+            'Fully-equipped Kitchenette',
+            'Full-size Fridge/Freezer',
+            'Two-ring Gas Hob',
+            'Convection/Microwave Oven & Air Fryer',
+            'Nespresso Machine, Kettle & Toaster',
+          ]}
+        />
+        <AmenitiesSection
+          heading="Bedrooms:"
+          items={[
+            'Main Bedroom: King-size Bed',
+            'Second Bedroom: Two Single Beds',
+            'En-suite for Main Bedroom',
+            'Second, Shower Only Bathroom',
+            'Towels Provided',
+            'Hairdryer',
+          ]}
+        />
+        <AmenitiesSection
+          heading="Comfort & Convenience:"
+          items={[
+            'High-speed Fibre Wi-Fi',
+            'Inverter & Battery Powered Lights (ensures 24/7 internet and lights)',
+            'Smart TV with Netflix',
+            'Combustion Wood Fireplace',
+            'Full Alarm System',
+            'Ironing Board & Iron',
+            'Camping Cot (available on request)',
+          ]}
+        />
+        <AmenitiesSection
+          heading="Outdoor & Parking:"
+          items={[
+            'Front Garden with wooden deck',
+            'Private Back Patio with Weber Braai',
+            'Dedicated Off-street Parking Verge for one vehicle',
+          ]}
+        />
       </div>
     </section>
     <section class="flex justify-center">
