@@ -1,13 +1,10 @@
 # .github/workflows/deploy.yml
 
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (stage)
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
+    branches: ["stage"] # Trigger only on pushes to the stage branch
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
