@@ -7,13 +7,13 @@ import cottageImage from '../assets/front-garden-2.jpg';
   title="About | Newlands Cottages"
   description="Learn about the story, heritage, and location of Newlands Cottages, a lovingly restored heritage property in the heart of the Southern Suburbs."
 >
+  <img
+    src={cottageImage.src}
+    alt="Front garden of Clarkia Cottage"
+    class="w-full max-h-96 mx-auto mb-8 shadow-md object-cover"
+  />
   <section class="max-w-2xl mx-auto px-4 py-10">
-    <img
-      src={cottageImage.src}
-      alt="Front garden of Clarkia Cottage"
-      class="w-full rounded-xl mb-8 shadow-md object-cover"
-    />
-    <article class="prose prose-lg prose-slate dark:prose-invert">
+    <article class="prose prose-lg prose-slate">
       <h1>Our Story</h1>
       <h2>Preserving Heritage, Creating Comfort</h2>
       <p>
@@ -37,13 +37,13 @@ import cottageImage from '../assets/front-garden-2.jpg';
         The location provides an ideal base for exploring, with the city centre,
         V&A Waterfront, and Muizenberg beaches all just an easy drive away.
       </p>
-      <h2>What Our Guests Say</h2>
+      <!-- <h2>What Our Guests Say</h2>
       <p>
         <em>
           (Placeholder for embedded Google/TripAdvisor reviews or manually
           copied testimonials)
         </em>
-      </p>
+      </p> -->
     </article>
   </section>
 </BaseLayout>

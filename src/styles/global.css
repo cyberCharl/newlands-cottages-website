@@ -2,4 +2,27 @@
 @import 'flowbite/src/themes/default';
 
 @plugin "flowbite/plugin";
+@plugin "@tailwindcss/typography";
 @source "../../node_modules/flowbite";
+
+/* Custom button styles to match old global.css */
+.btn {
+  @apply inline-block bg-emerald-900 text-white px-6 py-3 rounded-md font-medium transition-colors duration-300 border-none cursor-pointer text-base shadow-sm hover:bg-emerald-950 hover:text-white;
+}
+.btn-large {
+  @apply px-8 py-4 text-lg;
+}
+.btn-outline-primary {
+  @apply border border-emerald-900 text-emerald-900 bg-white hover:bg-emerald-900 hover:text-white transition-colors duration-300 rounded-md font-medium px-6 py-3;
+}
+
+/* Header and footer utility classes for color and shadow */
+.header-shadow {
+  @apply shadow-md sticky top-0 z-50 bg-white;
+}
+.footer-dark {
+  @apply bg-[#1a1a1a] text-white py-8 mt-8;
+}
+.footer-link {
+  @apply text-white hover:text-emerald-900 transition-colors duration-300;
+}
