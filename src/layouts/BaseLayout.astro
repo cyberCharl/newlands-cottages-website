@@ -1,135 +1,34 @@
 ---
-import './src/styles/global.css'
-import { Image } from 'astro:assets';
-import logo from '../assets/logo.png';
-
+import '../styles/global.css';
+import HeaderComponent from '../components/header.astro';
+import FooterComponent from '../components/footer.astro';
 export interface Props {
   title: string;
   description: string;
 }
-
 const { title, description } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
-    <link rel="icon" type="image/png" href="/newlands-cottages-website/favicon.png" />
-    <link rel="stylesheet" href="/newlands-cottages-website/styles/global.css" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"
+    ></script>
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen bg-white text-gray-900">
     <header>
-      <div class="container">
-        <div class="header-content">
-          <div class="logo">
-            <a href="/">
-              <Image src={logo} alt="Newlands Cottages Logo" class="logo-img" />
-              Newlands Cottages
-            </a>
-          </div>
-          <nav class="desktop-nav">
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/clarkia-guest-cottage">Clarkia Cottage</a></li>
-            </ul>
-          </nav>
-          <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
-            <span class="hamburger-icon">☰</span>
-          </button>
-        </div>
-      </div>
+      <HeaderComponent />
     </header>
-
-    <!-- Mobile Navigation Overlay -->
-    <div id="mobile-nav" class="mobile-nav-overlay" aria-hidden="true">
-      <div class="mobile-nav-content">
-        <button class="close-nav" aria-label="Close navigation menu">✕</button>
-        <nav class="mobile-nav">
-          <ul>
-            <li><a href="/newlands-cottages-website/">Home</a></li>
-            <li><a href="/newlands-cottages-website/clarkia-guest-cottage">Clarkia Cottage</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-
-    <main>
+    <main class="flex-1">
       <slot />
     </main>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div>
-            <a href="mailto:info@clarkia.co.za">Contact: info@clarkia.co.za</a>
-          </div>
-          <div>
-            © 2004 Newlands Cottages. All rights reserved.
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <script>
-      // Hamburger menu functionality
-      document.addEventListener('DOMContentLoaded', function() {
-        const hamburger = document.querySelector('.hamburger-menu') as HTMLButtonElement;
-        const mobileNav = document.getElementById('mobile-nav') as HTMLDivElement;
-        const closeNav = document.querySelector('.close-nav') as HTMLButtonElement;
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-
-        if (!hamburger || !mobileNav || !closeNav) {
-          console.error('Required navigation elements not found');
-          return;
-        }
-
-        function toggleNav() {
-          const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-          hamburger.setAttribute('aria-expanded', (!isExpanded).toString());
-          mobileNav.setAttribute('aria-hidden', isExpanded.toString());
-          
-          if (!isExpanded) {
-            mobileNav.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          } else {
-            mobileNav.classList.remove('active');
-            document.body.style.overflow = '';
-          }
-        }
-
-        function closeMobileNav() {
-          hamburger.setAttribute('aria-expanded', 'false');
-          mobileNav.setAttribute('aria-hidden', 'true');
-          mobileNav.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-
-        hamburger.addEventListener('click', toggleNav);
-        closeNav.addEventListener('click', closeMobileNav);
-
-        // Close nav when clicking on a link
-        mobileNavLinks.forEach(link => {
-          link.addEventListener('click', closeMobileNav);
-        });
-
-        // Close nav when clicking outside
-        mobileNav.addEventListener('click', function(e) {
-          if (e.target === mobileNav) {
-            closeMobileNav();
-          }
-        });
-
-        // Close nav on escape key
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-            closeMobileNav();
-          }
-        });
-      });
-    </script>
+    <FooterComponent />
   </body>
-</html> 
+</html>

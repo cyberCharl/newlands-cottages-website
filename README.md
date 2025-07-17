@@ -1,18 +1,47 @@
-# Astro Starter Kit: Basics
+# Dev setup & stuff
 
-```sh
-npm create astro@latest -- --template basics
-```
+## Dev & deployment flow
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### Branches
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+(todo: Branch policies and rules setup)
+(todo: Create personal doc for standard branch policies & rules - Related to AISSA working with me doc)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+`dev` branch – all commits, run locally, save progress
+* PR (squash merge) into stage to deploy to staging env
+
+`stage` branch – deploy on PR to github pages via Github Action
+* @ [https://cybercharl.github.io/newlands-cottages-website/]()
+* PR (rebase and fast-forward) into main to deploy to live link
+
+`main` branch – deployed to Netlify (still todo)
+* @ [https://newlandscottages.co.za/]() (still todo):
+    * Config the DNS records and set up deployment correctly
+
+### Dev ENV
+
+- Prettier for code formatting
+
+# Project Stack and Website Structure
+## Stack
+
+(todo: add nice banners here for the tech used)
+* Astro static site generator
+* TailwindCSS
+* Flowbite component Library
+
+## Website Structure
+
+1. **Home (/)**
+
+2. **Cottage Details (/clarkia-guest-cottage)**
+
+3. **About (/about)**
+
+4. **Contact (/contact-us)**
 
 ## 🚀 Project Structure
+*{ Stuff from the Astro starter. Might still be useful later }*
 
 Inside of your Astro project, you'll see the following folders and files:
 

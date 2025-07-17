@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Map from '../components/Map.astro';
+---
+
+<BaseLayout
+  title="Contact Us | Newlands Cottages"
+  description="Contact Newlands Cottages for booking inquiries, questions, or directions. Find our email, phone, and address here."
+>
+  <section class="max-w-2xl mx-auto px-4 py-10 flex flex-col gap-8">
+    <div class="bg-white rounded-xl shadow-md p-6 flex flex-col gap-4">
+      <h1 class="text-2xl font-bold mb-2">Get in Touch</h1>
+      <p class="text-gray-700 mb-4">
+        We look forward to hearing from you. For booking inquiries or any
+        questions about the cottage, please don't hesitate to reach out.
+      </p>
+      <div class="flex flex-col gap-2 text-base">
+        <div>
+          <span class="font-semibold">Email:</span>
+          <a
+            href="mailto:info@clarkia.co.za"
+            class="text-blue-600 hover:underline">info@clarkia.co.za</a
+          >
+        </div>
+        <div>
+          <span class="font-semibold">Phone:</span>
+          <a href="tel:+27216898067" class="text-blue-600 hover:underline"
+            >+27 (0)21 689 8067</a
+          >
+        </div>
+        <div>
+          <span class="font-semibold">Address:</span> 39 Klipper Road, Rondebosch,
+          7700, Western Cape, South Africa
+        </div>
+      </div>
+    </div>
+    <Map />
+  </section>
+</BaseLayout>
