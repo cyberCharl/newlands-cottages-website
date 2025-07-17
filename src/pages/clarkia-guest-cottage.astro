@@ -21,10 +21,63 @@ import livingRoom4 from '../assets/living-room-4.jpeg';
 >
   <div class="container">
     <h1>Clarkia Cottage</h1>
-    
+    <!-- Slider main container -->
+    <div class="swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <Image src={frontGarden2} alt="Private garden and outdoor space" class="carousel-image" />
+        </div>
+        <div class="swiper-slide">
+          <Image src={livingRoom1} alt="Living room with comfortable seating area" class="carousel-image" />
+        </div>
+        <div class="swiper-slide">
+          <Image src={kitchen1} alt="Fully equipped kitchen with modern appliances" class="carousel-image" />
+        </div>
+        <div class="swiper-slide">
+          <Image src={fireplace} alt="Cozy fireplace in the living area" class="carousel-image" />
+        </div>
+        <div class="swiper-slide">
+          <Image src={mainBedroom1} alt="Main bedroom with king-size bed" class="carousel-image" />
+        </div>
+        <div class="swiper-slide">
+          <Image src={secondBedroom1} alt="Second bedroom with twin beds" class="carousel-image" />
+        </div>
+        <div class="swiper-slide">
+          <Image src={hallway} alt="Welcoming hallway entrance" class="carousel-image" />
+        </div>
+        <div class="swiper-slide">
+          <Image src={enSuiteBathroom1} alt="En-suite bathroom with shower and modern fittings" class="carousel-image" />
+        </div>
+        <div class="swiper-slide">
+          <Image src={separateBathroom1} alt="Separate bathroom with shower" class="carousel-image" />
+        </div>
+        <div class="swiper-slide">
+          <Image src={livingRoom3} alt="Back door to back patio with washing machine visible" class="carousel-image" />
+        </div>
+        <div class="swiper-slide">
+          <Image src={livingRoom4} alt="Dining area with view of back patio seating area" class="carousel-image" />
+
+        </div>
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- If we need scrollbar -->
+      <div class="swiper-scrollbar"></div>
+    </div>
+
+
     <!-- Swiper Carousel Gallery -->
-    <div>
-      <swiper-container navigation="true" pagination="true" space-between="10" slides-per-view="1" class="swiper-main-gallery">
+    <!-- <div class="swiper">
+
+      
+      <swiper-container space-between="10" slides-per-view="1" class="swiper-main-gallery">
         <swiper-slide>
           <img src={frontGarden2.src} alt="Private garden and outdoor space" class="carousel-image pswp-gallery-item" data-pswp-src={frontGarden2.src} data-pswp-width="1200" data-pswp-height="800" />
         </swiper-slide>
@@ -58,11 +111,11 @@ import livingRoom4 from '../assets/living-room-4.jpeg';
         <swiper-slide>
           <img src={livingRoom4.src} alt="Dining area with table and chairs" class="carousel-image pswp-gallery-item" data-pswp-src={livingRoom4.src} data-pswp-width="1200" data-pswp-height="800" />
         </swiper-slide>
-      </swiper-container>
-    </div>
+       </swiper-container> 
+    </div> --->
     
     <!-- PhotoSwipe root element (required for v5+) -->
-    <div id="pswp" class="pswp" tabindex="-1" aria-hidden="true"></div>
+    <!-- <div id="pswp" class="pswp" tabindex="-1" aria-hidden="true"></div> -->
     
     <section>
       <h2>About the Space</h2>
@@ -104,12 +157,12 @@ import livingRoom4 from '../assets/living-room-4.jpeg';
     </div>
   </div>
 
-  <script type="module">
+  <!-- <script type="module">
     import PhotoSwipeLightbox from 'photoswipe/lightbox';
     import 'photoswipe/dist/photoswipe.css';
     import 'swiper/element/bundle';
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize Swiper (Web Component auto-initializes)
+
       // Initialize PhotoSwipe
       const lightbox = new PhotoSwipeLightbox({
         gallery: '.carousel-container',
@@ -118,9 +171,35 @@ import livingRoom4 from '../assets/living-room-4.jpeg';
       });
       lightbox.init();
     });
-  </script>
+  </script> -->
 
   <script>
+    import Swiper from 'swiper/bundle'; 
+    import 'swiper/css/bundle';
+
+    // Swiper initialize
+    const swiper = new Swiper('.swiper', {
+      // Optional parameters
+      loop: true,
+
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    });
+
+
     // Sticky banner functionality
     document.addEventListener('DOMContentLoaded', function() {
       const stickyBanner = document.getElementById('sticky-banner');
