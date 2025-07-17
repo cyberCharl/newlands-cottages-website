@@ -1,14 +1,9 @@
 ---
-import '../styles/global.css';
-import '../styles/input.css';
-import { Image } from 'astro:assets';
 import logo from '../assets/logo.png';
-
 export interface Props {
   title: string;
   description: string;
 }
-
 const { title, description } = Astro.props;
 ---
 
@@ -19,144 +14,100 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
-    <link
-      rel="icon"
-      type="image/png"
-      href="/newlands-cottages-website/favicon.png"
-    />
-    <link
-      rel="stylesheet"
-      href="/newlands-cottages-website/styles/global.css"
-    />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"
     ></script>
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen bg-white text-gray-900">
     <header>
-      <div class="container">
-        <div class="header-content">
-          <div class="logo">
-            <a href="/">
-              <Image src={logo} alt="Newlands Cottages Logo" class="logo-img" />
-              Newlands Cottages
-            </a>
-          </div>
-          <nav class="desktop-nav">
-            <ul>
-              <li><a href="/">Home</a></li>
+      <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div
+          class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+        >
+          <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src={logo.src} class="h-8" alt="Newlands Cottages Logo" />
+            <span
+              class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+              >Newlands Cottages</span
+            >
+          </a>
+          <button
+            data-collapse-toggle="navbar-default"
+            type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-default"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="w-6 h-6"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path></svg
+            >
+          </button>
+          <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+            <ul
+              class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+            >
               <li>
-                <a href="/clarkia-guest-cottage">Clarkia Cottage</a>
+                <a
+                  href="/"
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/clarkia-guest-cottage"
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >Clarkia Cottage</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/about"
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >About</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/contact-us"
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >Contact</a
+                >
               </li>
             </ul>
-          </nav>
-          <button
-            class="hamburger-menu"
-            aria-label="Toggle navigation menu"
-            aria-expanded="false"
-            aria-controls="mobile-nav"
-          >
-            <span class="hamburger-icon">☰</span>
-          </button>
+          </div>
         </div>
-      </div>
+      </nav>
     </header>
-
-    <!-- Mobile Navigation Overlay -->
-    <div id="mobile-nav" class="mobile-nav-overlay" aria-hidden="true">
-      <div class="mobile-nav-content">
-        <button class="close-nav" aria-label="Close navigation menu">✕</button>
-        <nav class="mobile-nav">
-          <ul>
-            <li><a href="/newlands-cottages-website/">Home</a></li>
-            <li>
-              <a href="/newlands-cottages-website/clarkia-guest-cottage"
-                >Clarkia Cottage</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-
-    <main>
+    <main class="flex-1">
       <slot />
     </main>
-
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div>
-            <a href="mailto:info@clarkia.co.za">Contact: info@clarkia.co.za</a>
-          </div>
-          <div>© 2005 Newlands Cottages. All rights reserved.</div>
+    <footer class="bg-gray-100 dark:bg-gray-900 py-6 mt-8">
+      <div
+        class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between text-gray-600 dark:text-gray-300 text-sm"
+      >
+        <div>
+          <a href="mailto:info@clarkia.co.za" class="hover:underline"
+            >Contact: info@clarkia.co.za</a
+          >
+        </div>
+        <div class="mt-2 md:mt-0">
+          &copy; 2005 Newlands Cottages. All rights reserved.
         </div>
       </div>
     </footer>
-
-    <script>
-      // Hamburger menu functionality
-      document.addEventListener('DOMContentLoaded', function () {
-        const hamburger = document.querySelector(
-          '.hamburger-menu',
-        ) as HTMLButtonElement;
-        const mobileNav = document.getElementById(
-          'mobile-nav',
-        ) as HTMLDivElement;
-        const closeNav = document.querySelector(
-          '.close-nav',
-        ) as HTMLButtonElement;
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-
-        if (!hamburger || !mobileNav || !closeNav) {
-          console.error('Required navigation elements not found');
-          return;
-        }
-
-        function toggleNav() {
-          const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-          hamburger.setAttribute('aria-expanded', (!isExpanded).toString());
-          mobileNav.setAttribute('aria-hidden', isExpanded.toString());
-
-          if (!isExpanded) {
-            mobileNav.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          } else {
-            mobileNav.classList.remove('active');
-            document.body.style.overflow = '';
-          }
-        }
-
-        function closeMobileNav() {
-          hamburger.setAttribute('aria-expanded', 'false');
-          mobileNav.setAttribute('aria-hidden', 'true');
-          mobileNav.classList.remove('active');
-          document.body.style.overflow = '';
-        }
-
-        hamburger.addEventListener('click', toggleNav);
-        closeNav.addEventListener('click', closeMobileNav);
-
-        // Close nav when clicking on a link
-        mobileNavLinks.forEach((link) => {
-          link.addEventListener('click', closeMobileNav);
-        });
-
-        // Close nav when clicking outside
-        mobileNav.addEventListener('click', function (e) {
-          if (e.target === mobileNav) {
-            closeMobileNav();
-          }
-        });
-
-        // Close nav on escape key
-        document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-            closeMobileNav();
-          }
-        });
-      });
-    </script>
   </body>
 </html>
