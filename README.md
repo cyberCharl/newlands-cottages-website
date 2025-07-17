@@ -2,6 +2,11 @@
 
 ## Dev & deployment flow
 
+### Branches
+
+(todo: Branch policies and rules setup)
+(todo: Create personal doc for standard branch policies & rules - Related to AISSA working with me doc)
+
 `dev` branch – all commits, run locally, save progress
 * PR (squash merge) into stage to deploy to staging env
 
@@ -12,6 +17,10 @@
 `main` branch – deployed to Netlify (still todo)
 * @ [https://newlandscottages.co.za/]() (still todo):
     * Config the DNS records and set up deployment correctly
+
+### Dev ENV
+
+- Prettier for code formatting
 
 # Project Stack and Website Structure
 ## Stack
@@ -31,12 +40,8 @@
 
 4. **Contact (/contact-us)**
 
-## Project Structure
-
-
-# Astro Starter Kit: Basics
-
 ## 🚀 Project Structure
+*{ Stuff from the Astro starter. Might still be useful later }*
 
 Inside of your Astro project, you'll see the following folders and files:
 
