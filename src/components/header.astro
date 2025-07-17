@@ -1,11 +1,13 @@
 ---
 import logo from '../assets/logo.png';
+import NavItem from './NavItem.astro';
 ---
 
 <nav class="header-shadow">
   <div
     class="max-w-screen-xl flex flex-nowrap items-center justify-between mx-auto py-4 px-2 sm:px-4"
   >
+    <!-- Logo & Text -->
     <a
       href="/"
       class="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse"
@@ -20,6 +22,7 @@ import logo from '../assets/logo.png';
         >Newlands Cottages</span
       >
     </a>
+    <!-- Hamburger Menu -->
     <button
       data-collapse-toggle="navbar-default"
       type="button"
@@ -42,38 +45,17 @@ import logo from '../assets/logo.png';
           d="M4 6h16M4 12h16M4 18h16"></path></svg
       >
     </button>
-    <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+    <div
+      class="hidden absolute top-full left-0 w-full shadow-md rounded-b-xl md:static md:block md:w-auto bg-white z-40 border-t md:border-0"
+      id="navbar-default"
+    >
       <ul
-        class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white"
+        class="font-medium flex flex-col p-4 bg-white md:p-0 mt-0 md:mt-0 border-0 md:flex-row md:space-x-8"
       >
-        <li>
-          <a
-            href="/"
-            class="block py-2 px-3 text-emerald-900 font-medium rounded hover:underline hover:text-emerald-950 transition-colors duration-300"
-            >Home</a
-          >
-        </li>
-        <li>
-          <a
-            href="/clarkia-guest-cottage"
-            class="block py-2 px-3 text-emerald-900 font-medium rounded hover:underline hover:text-emerald-950 transition-colors duration-300"
-            >Clarkia Cottage</a
-          >
-        </li>
-        <li>
-          <a
-            href="/about"
-            class="block py-2 px-3 text-emerald-900 font-medium rounded hover:underline hover:text-emerald-950 transition-colors duration-300"
-            >About</a
-          >
-        </li>
-        <li>
-          <a
-            href="/contact-us"
-            class="block py-2 px-3 text-emerald-900 font-medium rounded hover:underline hover:text-emerald-950 transition-colors duration-300"
-            >Contact</a
-          >
-        </li>
+        <NavItem href="/" display_name="Home" />
+        <NavItem href="/clarkia-guest-cottage" display_name="Clarkia Cottage" />
+        <NavItem href="/about" display_name="About" />
+        <NavItem href="/contact" display_name="Contact" />
       </ul>
     </div>
   </div>
