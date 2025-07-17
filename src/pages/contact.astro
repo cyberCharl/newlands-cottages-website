@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import MapContainer from '../components/map-container.astro';
 ---
 
 <BaseLayout
@@ -18,12 +19,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="font-semibold">Email:</span>
           <a
             href="mailto:info@clarkia.co.za"
-            class="text-blue-600 hover:underline">info@clarkia.co.za</a>
+            class="text-blue-600 hover:underline">info@clarkia.co.za</a
+          >
         </div>
         <div>
           <span class="font-semibold">Phone:</span>
           <a href="tel:+27216898067" class="text-blue-600 hover:underline"
-            >+27 (0)21 689 8067</a>
+            >+27 (0)21 689 8067</a
+          >
         </div>
         <div>
           <span class="font-semibold">Address:</span> 39 Klipper Road, Rondebosch,
@@ -31,11 +34,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
     </div>
-    <div
-      class="rounded-xl bg-gray-100 flex items-center justify-center aspect-[16/9] min-h-[200px] text-gray-500 text-lg font-medium border border-dashed border-gray-300"
-    >
-      Embedded Google Map will be here.
-    </div>
+    <MapContainer />
   </section>
 </BaseLayout>
-

@@ -84,3 +84,31 @@
     </button>
   </div>
 </div> -->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const banner = document.getElementById('book-banner');
+    const bookingBtn = document.getElementById('main-booking-btn');
+
+    if (!banner || !bookingBtn) return;
+
+    function handleIntersect(entries: IntersectionObserverEntry[]) {
+      entries.forEach((entry: IntersectionObserverEntry) => {
+        if (!banner) return;
+        if (entry.isIntersecting) {
+          banner.style.display = 'none';
+        } else {
+          banner.style.display = '';
+        }
+      });
+    }
+
+    const observer = new window.IntersectionObserver(handleIntersect, {
+      root: null,
+      threshold: 0.1,
+    });
+
+    observer.observe(bookingBtn);
+    window.addEventListener('beforeunload', () => observer.disconnect());
+  });
+</script>
