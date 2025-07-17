@@ -1,20 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import 'photoswipe/dist/photoswipe.css';
+import Carousel from '../components/carousel.astro';
 
-// Image imports
-import frontGarden2 from '../assets/front-garden-2.jpg';
-import livingRoom1 from '../assets/living-room-1.jpg';
-import kitchen1 from '../assets/kitchen-1.jpg';
-import fireplace from '../assets/fireplace.jpg';
-import mainBedroom1 from '../assets/main-bedroom-1.jpg';
-import secondBedroom1 from '../assets/second-bedroom-1.jpg';
-import hallway from '../assets/hallway.jpg';
-import enSuiteBathroom1 from '../assets/en-suite-bathroom-1.jpg';
-import separateBathroom1 from '../assets/separate-bathroom-1.jpg';
-import livingRoom3 from '../assets/living-room-3.jpeg';
-import livingRoom4 from '../assets/living-room-4.jpeg';
 ---
 
 <BaseLayout 
@@ -23,102 +10,9 @@ import livingRoom4 from '../assets/living-room-4.jpeg';
 >
   <div class="container">
     <h1>Clarkia Cottage</h1>
-    <!-- Slider main container -->
-    <div class="swiper">
-      <!-- Additional required wrapper -->
-      <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide">
-          <Image src={frontGarden2} alt="Private garden and outdoor space" class="carousel-image" />
-        </div>
-        <div class="swiper-slide">
-          <Image src={livingRoom1} alt="Living room with comfortable seating area" class="carousel-image" />
-        </div>
-        <div class="swiper-slide">
-          <Image src={kitchen1} alt="Fully equipped kitchen with modern appliances" class="carousel-image" />
-        </div>
-        <div class="swiper-slide">
-          <Image src={fireplace} alt="Cozy fireplace in the living area" class="carousel-image" />
-        </div>
-        <div class="swiper-slide">
-          <Image src={mainBedroom1} alt="Main bedroom with king-size bed" class="carousel-image" />
-        </div>
-        <div class="swiper-slide">
-          <Image src={secondBedroom1} alt="Second bedroom with twin beds" class="carousel-image" />
-        </div>
-        <div class="swiper-slide">
-          <Image src={hallway} alt="Welcoming hallway entrance" class="carousel-image" />
-        </div>
-        <div class="swiper-slide">
-          <Image src={enSuiteBathroom1} alt="En-suite bathroom with shower and modern fittings" class="carousel-image" />
-        </div>
-        <div class="swiper-slide">
-          <Image src={separateBathroom1} alt="Separate bathroom with shower" class="carousel-image" />
-        </div>
-        <div class="swiper-slide">
-          <Image src={livingRoom3} alt="Back door to back patio with washing machine visible" class="carousel-image" />
-        </div>
-        <div class="swiper-slide">
-          <Image src={livingRoom4} alt="Dining area with view of back patio seating area" class="carousel-image" />
 
-        </div>
-      </div>
-      <!-- If we need pagination -->
-      <div class="swiper-pagination"></div>
+    <Carousel />
 
-      <!-- If we need navigation buttons -->
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-
-      <!-- If we need scrollbar -->
-      <div class="swiper-scrollbar"></div>
-    </div>
-
-
-    <!-- Swiper Carousel Gallery -->
-    <!-- <div class="swiper">
-
-      
-      <swiper-container space-between="10" slides-per-view="1" class="swiper-main-gallery">
-        <swiper-slide>
-          <img src={frontGarden2.src} alt="Private garden and outdoor space" class="carousel-image pswp-gallery-item" data-pswp-src={frontGarden2.src} data-pswp-width="1200" data-pswp-height="800" />
-        </swiper-slide>
-        <swiper-slide>
-          <img src={livingRoom1.src} alt="Living room with comfortable seating area" class="carousel-image pswp-gallery-item" data-pswp-src={livingRoom1.src} data-pswp-width="1200" data-pswp-height="800" />
-        </swiper-slide>
-        <swiper-slide>
-          <img src={kitchen1.src} alt="Fully equipped kitchen with modern appliances" class="carousel-image pswp-gallery-item" data-pswp-src={kitchen1.src} data-pswp-width="1200" data-pswp-height="800" />
-        </swiper-slide>
-        <swiper-slide>
-          <img src={fireplace.src} alt="Cozy fireplace in the living area" class="carousel-image pswp-gallery-item" data-pswp-src={fireplace.src} data-pswp-width="800" data-pswp-height="1200" />
-        </swiper-slide>
-        <swiper-slide>
-          <img src={mainBedroom1.src} alt="Main bedroom with king-size bed" class="carousel-image pswp-gallery-item" data-pswp-src={mainBedroom1.src} data-pswp-width="1200" data-pswp-height="800" />
-        </swiper-slide>
-        <swiper-slide>
-          <img src={secondBedroom1.src} alt="Second bedroom with twin beds" class="carousel-image pswp-gallery-item" data-pswp-src={secondBedroom1.src} data-pswp-width="1200" data-pswp-height="800" />
-        </swiper-slide>
-        <swiper-slide>
-          <img src={hallway.src} alt="Welcoming hallway entrance" class="carousel-image pswp-gallery-item" data-pswp-src={hallway.src} data-pswp-width="800" data-pswp-height="1200" />
-        </swiper-slide>
-        <swiper-slide>
-          <img src={enSuiteBathroom1.src} alt="En-suite bathroom with shower and modern fittings" class="carousel-image pswp-gallery-item" data-pswp-src={enSuiteBathroom1.src} data-pswp-width="1200" data-pswp-height="800" />
-        </swiper-slide>
-        <swiper-slide>
-          <img src={separateBathroom1.src} alt="Separate bathroom with shower" class="carousel-image pswp-gallery-item" data-pswp-src={separateBathroom1.src} data-pswp-width="1200" data-pswp-height="800" />
-        </swiper-slide>
-        <swiper-slide>
-          <img src={livingRoom3.src} alt="Back patio with outdoor seating area" class="carousel-image pswp-gallery-item" data-pswp-src={livingRoom3.src} data-pswp-width="1200" data-pswp-height="800" />
-        </swiper-slide>
-        <swiper-slide>
-          <img src={livingRoom4.src} alt="Dining area with table and chairs" class="carousel-image pswp-gallery-item" data-pswp-src={livingRoom4.src} data-pswp-width="1200" data-pswp-height="800" />
-        </swiper-slide>
-       </swiper-container> 
-    </div> --->
-    
-    <!-- PhotoSwipe root element (required for v5+) -->
-    <!-- <div id="pswp" class="pswp" tabindex="-1" aria-hidden="true"></div> -->
-    
     <section>
       <h2>About the Space</h2>
       <p>
@@ -176,30 +70,30 @@ import livingRoom4 from '../assets/living-room-4.jpeg';
   </script> -->
 
   <script>
-    import Swiper from 'swiper/bundle'; 
-    import 'swiper/css/bundle';
+    // import Swiper from 'swiper/bundle'; 
+    // import 'swiper/css/bundle';
 
-    // Swiper initialize
-    const swiper = new Swiper('.swiper', {
-      // Optional parameters
-      loop: true,
+    // // Swiper initialize
+    // const swiper = new Swiper('.swiper', {
+    //   // Optional parameters
+    //   loop: true,
 
-      // If we need pagination
-      pagination: {
-        el: '.swiper-pagination',
-      },
+    //   // If we need pagination
+    //   pagination: {
+    //     el: '.swiper-pagination',
+    //   },
 
-      // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+    //   // Navigation arrows
+    //   navigation: {
+    //     nextEl: '.swiper-button-next',
+    //     prevEl: '.swiper-button-prev',
+    //   },
 
-      // And if we need scrollbar
-      scrollbar: {
-        el: '.swiper-scrollbar',
-      },
-    });
+    //   // And if we need scrollbar
+    //   scrollbar: {
+    //     el: '.swiper-scrollbar',
+    //   },
+    // });
 
 
     // Sticky banner functionality

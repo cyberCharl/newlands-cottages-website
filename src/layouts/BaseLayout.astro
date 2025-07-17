@@ -1,4 +1,5 @@
 ---
+import "../styles/global.css";
 import '../styles/input.css'
 import { Image } from 'astro:assets';
 import logo from '../assets/logo.png';
@@ -20,7 +21,7 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <link rel="icon" type="image/png" href="/newlands-cottages-website/favicon.png" />
     <link rel="stylesheet" href="/newlands-cottages-website/styles/global.css" />
-    <script defer src="https://unpkg.com/flowbite@2.3.0/dist/flowbite.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   </head>
   <body>
     <header>
@@ -69,7 +70,7 @@ const { title, description } = Astro.props;
             <a href="mailto:info@clarkia.co.za">Contact: info@clarkia.co.za</a>
           </div>
           <div>
-            © 2004 Newlands Cottages. All rights reserved.
+            © 2005 Newlands Cottages. All rights reserved.
           </div>
         </div>
       </div>
@@ -132,5 +133,6 @@ const { title, description } = Astro.props;
         });
       });
     </script>
+
   </body>
 </html> 
