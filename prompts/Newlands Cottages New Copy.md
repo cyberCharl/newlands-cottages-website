@@ -1,6 +1,3 @@
----
-modified_date: 2025-07-16T17:38
----
 ### **Page 1: Home (/)**
 
 **Headline:**
@@ -13,7 +10,7 @@ modified_date: 2025-07-16T17:38
 
 Proudly recognized as a TripAdvisor Traveller's Choice destination with consistent 5-star guest reviews on Google. [View The Cottage] (/clarkia-guest-cottage) [Book Your Stay] (https://book.nightsbridge.com/12344)
 
-### **A Labour of Love Since 200**
+### **A Labour of Love Since 2005**
 
 Newlands Cottages is the result of an ongoing passion for hospitality and heritage. We pride ourselves on preserving the unique character of this historic property while providing a welcoming, functional, and modern space for our guests.
 
@@ -27,7 +24,7 @@ Newlands Cottages is the result of an ongoing passion for hospitality and herita
 
 ### **About the Space**
 
-Clarkia Cottage is a beautifully restored 2-bedroom heritage cottage providing a private and comfortable retreat for up to four guests. The main bedroom features a luxurious king-size bed and a full en-suite bathroom. The second bedroom contains two single beds with easy access to a separate, modern bathroom with a shower.The open-plan living area is designed for relaxation, featuring a charming combustion wood fireplace and a smart TV with streaming services. The kitchen is thoughtfully equipped for all your self-catering needs, including a two-ring gas hob, convection/microwave oven, air fryer, and a full-size fridge/freezer. For your convenience, a Nespresso machine, kettle, and toaster are also provided.Step outside to a small, tranquil front garden or enjoy the private back patio, complete with a Weber braai for outdoor dining and a washing machine for laundry.
+Clarkia Cottage is a beautifully restored 2-bedroom heritage cottage providing comfortable accomodation for up to four guests. The main bedroom features a king-size bed and a full en-suite bathroom. The second bedroom contains two single beds access to a shower-only bathroom. The open-plan living area is designed for relaxation, featuring a charming combustion wood fireplace and a smart TV with streaming services over reliable WiFi. An inverter and battery-operated lights are available if there is loadshedding. The kitchen is thoughtfully equipped for all your self-catering needs, including a two-ring gas hob, convection/microwave oven, air fryer, and a full-size fridge/freezer. We have a Nespresso machine for coffee lovers. A kettle and toaster are also provided. Step outside to a small, tranquil front garden or enjoy the private back patio, complete with a Weber braai for outdoor cooking and a washing machine for laundry. Dedicated parking is available on the wide, paved verge in front of the property, suitable for one vehicle.
 
 ### **Amenities**
 
@@ -39,19 +36,20 @@ Clarkia Cottage is a beautifully restored 2-bedroom heritage cottage providing a
 - Convection/Microwave Oven & Air Fryer
 - Nespresso Machine, Kettle & Toaster
 
-**Bed & Bath:**
+**Bedrooms:**
 
 - Main Bedroom: King-size Bed
 - Second Bedroom: Two Single Beds
-- En-suite and Separate Bathrooms
-- High-Quality Towels Provided
+- En-suite for Main Bedroom
+- Second, Shower Only Bathroom
+- Towels Provided
 - Hairdryer
 
 **Comfort & Convenience:**
 
 - High-speed Fibre Wi-Fi
-- Inverter & Battery Backup (ensures 24/7 internet and lights)
-- Smart TV with Netflix, Britbox, etc.
+- Inverter & Battery Powered Lights (ensures 24/7 internet and lights)
+- Smart TV with Netflix.
 - Combustion Wood Fireplace
 - Full Alarm System
 - Ironing Board & Iron
@@ -59,6 +57,7 @@ Clarkia Cottage is a beautifully restored 2-bedroom heritage cottage providing a
 
 **Outdoor & Parking:**
 
+- Front Garden with wooden deck
 - Private Back Patio with Weber Braai
 - Dedicated Off-street Parking Verge for one vehicle
 
@@ -72,15 +71,15 @@ Clarkia Cottage is a beautifully restored 2-bedroom heritage cottage providing a
 
 ### **Preserving Heritage, Creating Comfort**
 
-Newlands Cottages has been welcoming guests since 2005. In 2014, Clarkia Cottage underwent a significant renovation to enhance the living space and add a second bathroom, all while respecting the building's heritage status and its unique location opposite the presidential residence. Our mission has always been to stay true to the original style of the cottage, with its beautiful Oregon wood floors and original doors, while fitting in as much modern comfort as possible.The decorating style is "Shabby Chic," a look that perfectly suits the cottage's history. We've used techniques from Annie Sloan to create a space that feels both authentic and lovingly curated.
+Newlands Cottages has been welcoming guests since 2005. In 2014, Clarkia Cottage underwent a significant renovation to enhance the living space and add a second bathroom, all while respecting the building's heritage status and its unique location opposite the presidential residence. Our mission has always been to stay true to the original style of the cottage, with its beautiful Oregon wood floors and original doors, while fitting in as much modern comfort as possible. The decorating style is "Shabby Chic," a look that perfectly suits the cottage's history. We've used techniques from Annie Sloan to create a space that feels both authentic and lovingly curated.
 
 ### **The Heart of the Southern Suburbs**
 
-Our cottage is nestled in the unique and leafy community of Rondebosch/Newlands. Situated directly below the iconic Table Mountain, we are within walking distance of beautiful mountain trails, Kirstenbosch Botanical Gardens, and the University of Cape Town (UCT). The location provides an ideal base for exploring, with the city centre, V&A Waterfront, and Muizenberg beaches all just an easy drive away.**(Testimonials Section)**
+Our cottage is nestled in the unique and leafy community of Rondebosch/Newlands. Situated directly below the iconic Table Mountain, we are within walking distance of beautiful mountain trails, Kirstenbosch Botanical Gardens, and the University of Cape Town (UCT). The location provides an ideal base for exploring, with the city centre, V&A Waterfront, and Muizenberg beaches all just an easy drive away.
 
 ### **What Our Guests Say**
 
-_(Placeholder for embedded Google/TripAdvisor reviews or manually copied testimonials)_
+**(Testimonials Section)** _(Placeholder for embedded Google/TripAdvisor reviews or manually copied testimonials)_
 
 ---
 

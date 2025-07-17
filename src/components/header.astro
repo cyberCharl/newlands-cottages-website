@@ -1,0 +1,62 @@
+---
+import logo from '../assets/logo.png';
+import NavItem from './NavItem.astro';
+---
+
+<nav class="header-shadow">
+  <div
+    class="max-w-screen-xl flex flex-nowrap items-center justify-between mx-auto py-4 px-2 sm:px-4"
+  >
+    <!-- Logo & Text -->
+    <a
+      href="/"
+      class="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse"
+    >
+      <img
+        src={logo.src}
+        class="h-8 sm:h-10 w-auto"
+        alt="Newlands Cottages Logo"
+      />
+      <span
+        class="self-center text-lg sm:text-2xl font-bold whitespace-nowrap text-emerald-900"
+        >Newlands Cottages</span
+      >
+    </a>
+    <!-- Hamburger Menu -->
+    <button
+      data-collapse-toggle="navbar-default"
+      type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-emerald-900 rounded-lg md:hidden hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+      aria-controls="navbar-default"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open main menu</span>
+      <svg
+        class="w-6 h-6"
+        aria-hidden="true"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"></path></svg
+      >
+    </button>
+    <div
+      class="hidden absolute top-full left-0 w-full shadow-md rounded-b-xl md:static md:block md:w-auto bg-white z-40 border-t md:border-0"
+      id="navbar-default"
+    >
+      <ul
+        class="font-medium flex flex-col p-4 bg-white md:p-0 mt-0 md:mt-0 border-0 md:flex-row md:space-x-8"
+      >
+        <NavItem href="/" display_name="Home" />
+        <NavItem href="/clarkia-guest-cottage" display_name="Clarkia Cottage" />
+        <NavItem href="/about" display_name="About" />
+        <NavItem href="/contact-us" display_name="Contact" />
+      </ul>
+    </div>
+  </div>
+</nav>
