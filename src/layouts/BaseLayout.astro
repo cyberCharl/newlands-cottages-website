@@ -1,6 +1,6 @@
 ---
-import "../styles/global.css";
-import '../styles/input.css'
+import '../styles/global.css';
+import '../styles/input.css';
 import { Image } from 'astro:assets';
 import logo from '../assets/logo.png';
 
@@ -12,16 +12,26 @@ export interface Props {
 const { title, description } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title}</title>
-    <link rel="icon" type="image/png" href="/newlands-cottages-website/favicon.png" />
-    <link rel="stylesheet" href="/newlands-cottages-website/styles/global.css" />
-    <script defer src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <link
+      rel="icon"
+      type="image/png"
+      href="/newlands-cottages-website/favicon.png"
+    />
+    <link
+      rel="stylesheet"
+      href="/newlands-cottages-website/styles/global.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"
+    ></script>
   </head>
   <body>
     <header>
@@ -36,10 +46,17 @@ const { title, description } = Astro.props;
           <nav class="desktop-nav">
             <ul>
               <li><a href="/">Home</a></li>
-              <li><a href="/clarkia-guest-cottage">Clarkia Cottage</a></li>
+              <li>
+                <a href="/clarkia-guest-cottage">Clarkia Cottage</a>
+              </li>
             </ul>
           </nav>
-          <button class="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <button
+            class="hamburger-menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+          >
             <span class="hamburger-icon">☰</span>
           </button>
         </div>
@@ -53,7 +70,11 @@ const { title, description } = Astro.props;
         <nav class="mobile-nav">
           <ul>
             <li><a href="/newlands-cottages-website/">Home</a></li>
-            <li><a href="/newlands-cottages-website/clarkia-guest-cottage">Clarkia Cottage</a></li>
+            <li>
+              <a href="/newlands-cottages-website/clarkia-guest-cottage"
+                >Clarkia Cottage</a
+              >
+            </li>
           </ul>
         </nav>
       </div>
@@ -69,19 +90,23 @@ const { title, description } = Astro.props;
           <div>
             <a href="mailto:info@clarkia.co.za">Contact: info@clarkia.co.za</a>
           </div>
-          <div>
-            © 2005 Newlands Cottages. All rights reserved.
-          </div>
+          <div>© 2005 Newlands Cottages. All rights reserved.</div>
         </div>
       </div>
     </footer>
 
     <script>
       // Hamburger menu functionality
-      document.addEventListener('DOMContentLoaded', function() {
-        const hamburger = document.querySelector('.hamburger-menu') as HTMLButtonElement;
-        const mobileNav = document.getElementById('mobile-nav') as HTMLDivElement;
-        const closeNav = document.querySelector('.close-nav') as HTMLButtonElement;
+      document.addEventListener('DOMContentLoaded', function () {
+        const hamburger = document.querySelector(
+          '.hamburger-menu',
+        ) as HTMLButtonElement;
+        const mobileNav = document.getElementById(
+          'mobile-nav',
+        ) as HTMLDivElement;
+        const closeNav = document.querySelector(
+          '.close-nav',
+        ) as HTMLButtonElement;
         const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
 
         if (!hamburger || !mobileNav || !closeNav) {
@@ -93,7 +118,7 @@ const { title, description } = Astro.props;
           const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
           hamburger.setAttribute('aria-expanded', (!isExpanded).toString());
           mobileNav.setAttribute('aria-hidden', isExpanded.toString());
-          
+
           if (!isExpanded) {
             mobileNav.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -114,25 +139,24 @@ const { title, description } = Astro.props;
         closeNav.addEventListener('click', closeMobileNav);
 
         // Close nav when clicking on a link
-        mobileNavLinks.forEach(link => {
+        mobileNavLinks.forEach((link) => {
           link.addEventListener('click', closeMobileNav);
         });
 
         // Close nav when clicking outside
-        mobileNav.addEventListener('click', function(e) {
+        mobileNav.addEventListener('click', function (e) {
           if (e.target === mobileNav) {
             closeMobileNav();
           }
         });
 
         // Close nav on escape key
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
           if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
             closeMobileNav();
           }
         });
       });
     </script>
-
   </body>
-</html> 
+</html>

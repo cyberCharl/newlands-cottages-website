@@ -1,10 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Carousel from '../components/carousel.astro';
-
 ---
 
-<BaseLayout 
+<BaseLayout
   title="Clarkia Cottage | Newlands Cottages Accommodation Details"
   description="View photos, amenities, and details for our private self-catering cottage. Features a full kitchen, private garden, and modern comforts."
 >
@@ -16,12 +15,27 @@ import Carousel from '../components/carousel.astro';
     <section>
       <h2>About the Space</h2>
       <p>
-        Clarkia Cottage provides comfortable 2-bedroom accommodation for up to four guests. The main bedroom features a king-size bed and a full en-suite bathroom, with the second bathroom including two single beds with access to a shower-only bathroom. The kitchen is thoughtfully equipped with essential appliances, including a fridge, a two-ring gas hob, a convection/microwave oven, and an air fryer. For coffee lovers, there's a Nespresso machine, along with a kettle and toaster. A charming combustion wood fireplace adds to the cosy atmosphere, with a smart TV and reliable Wi-Fi available for entertainment. An inverter and battery-operated lights are available if there is loadshedding. Outside, a small front garden offers a pleasant space, while a private patio at the back features a Weber braai for outdoor cooking and a washing machine for laundry needs. Dedicated parking is available on the wide, paved verge in front of the property, suitable for one vehicle.
-        <br><br>
-        The surrounding area presents a wealth of activities and attractions. Guests can easily access opportunities for hiking, bird watching, wine tasting, cycling, and swimming, ensuring a memorable stay.
+        Clarkia Cottage provides comfortable 2-bedroom accommodation for up to
+        four guests. The main bedroom features a king-size bed and a full
+        en-suite bathroom, with the second bathroom including two single beds
+        with access to a shower-only bathroom. The kitchen is thoughtfully
+        equipped with essential appliances, including a fridge, a two-ring gas
+        hob, a convection/microwave oven, and an air fryer. For coffee lovers,
+        there's a Nespresso machine, along with a kettle and toaster. A charming
+        combustion wood fireplace adds to the cosy atmosphere, with a smart TV
+        and reliable Wi-Fi available for entertainment. An inverter and
+        battery-operated lights are available if there is loadshedding. Outside,
+        a small front garden offers a pleasant space, while a private patio at
+        the back features a Weber braai for outdoor cooking and a washing
+        machine for laundry needs. Dedicated parking is available on the wide,
+        paved verge in front of the property, suitable for one vehicle.
+        <br /><br />
+        The surrounding area presents a wealth of activities and attractions. Guests
+        can easily access opportunities for hiking, bird watching, wine tasting,
+        cycling, and swimming, ensuring a memorable stay.
       </p>
     </section>
-    
+
     <section class="amenities">
       <h2>Amenities</h2>
       <ul>
@@ -35,9 +49,13 @@ import Carousel from '../components/carousel.astro';
         <li>En-suite Bathroom with Shower</li>
       </ul>
     </section>
-    
+
     <section class="booking-section">
-      <a href="https://book.nightsbridge.com/12344" target="_blank" class="btn btn-large">
+      <a
+        href="https://book.nightsbridge.com/12344"
+        target="_blank"
+        class="btn btn-large"
+      >
         Check Availability & Book Now
       </a>
     </section>
@@ -46,10 +64,16 @@ import Carousel from '../components/carousel.astro';
   <!-- Sticky Book Now Banner for Mobile -->
   <div class="sticky-book-banner" id="sticky-banner">
     <div class="banner-content">
-      <a href="https://book.nightsbridge.com/12344" target="_blank" class="btn btn-large">
+      <a
+        href="https://book.nightsbridge.com/12344"
+        target="_blank"
+        class="btn btn-large"
+      >
         Check Availability & Book Now
       </a>
-      <button class="banner-close" aria-label="Close banner" id="banner-close">✕</button>
+      <button class="banner-close" aria-label="Close banner" id="banner-close"
+        >✕</button
+      >
     </div>
   </div>
 
@@ -70,7 +94,7 @@ import Carousel from '../components/carousel.astro';
   </script> -->
 
   <script>
-    // import Swiper from 'swiper/bundle'; 
+    // import Swiper from 'swiper/bundle';
     // import 'swiper/css/bundle';
 
     // // Swiper initialize
@@ -95,9 +119,8 @@ import Carousel from '../components/carousel.astro';
     //   },
     // });
 
-
     // Sticky banner functionality
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const stickyBanner = document.getElementById('sticky-banner');
       const bannerClose = document.getElementById('banner-close');
       const bookingSection = document.querySelector('.booking-section');
@@ -119,20 +142,26 @@ import Carousel from '../components/carousel.astro';
         }
 
         // Intersection Observer to hide banner when booking section is visible
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              stickyBanner.style.display = 'none';
-            } else {
-              // Only show banner on mobile and if it wasn't manually closed
-              if (isMobile() && localStorage.getItem('banner-closed') !== 'true') {
-                stickyBanner.style.display = 'block';
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                stickyBanner.style.display = 'none';
+              } else {
+                // Only show banner on mobile and if it wasn't manually closed
+                if (
+                  isMobile() &&
+                  localStorage.getItem('banner-closed') !== 'true'
+                ) {
+                  stickyBanner.style.display = 'block';
+                }
               }
-            }
-          });
-        }, {
-          threshold: 0.1 // Trigger when 10% of booking section is visible
-        });
+            });
+          },
+          {
+            threshold: 0.1, // Trigger when 10% of booking section is visible
+          },
+        );
 
         observer.observe(bookingSection);
 
@@ -147,4 +176,5 @@ import Carousel from '../components/carousel.astro';
       }
     });
   </script>
-</BaseLayout> 
+</BaseLayout>
+
