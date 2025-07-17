@@ -7,174 +7,135 @@ import Carousel from '../components/carousel.astro';
   title="Clarkia Cottage | Newlands Cottages Accommodation Details"
   description="View photos, amenities, and details for our private self-catering cottage. Features a full kitchen, private garden, and modern comforts."
 >
-  <div class="container">
-    <h1>Clarkia Cottage</h1>
-
-    <Carousel />
-
-    <section>
-      <h2>About the Space</h2>
-      <p>
-        Clarkia Cottage provides comfortable 2-bedroom accommodation for up to
-        four guests. The main bedroom features a king-size bed and a full
-        en-suite bathroom, with the second bathroom including two single beds
-        with access to a shower-only bathroom. The kitchen is thoughtfully
-        equipped with essential appliances, including a fridge, a two-ring gas
-        hob, a convection/microwave oven, and an air fryer. For coffee lovers,
-        there's a Nespresso machine, along with a kettle and toaster. A charming
-        combustion wood fireplace adds to the cosy atmosphere, with a smart TV
-        and reliable Wi-Fi available for entertainment. An inverter and
-        battery-operated lights are available if there is loadshedding. Outside,
-        a small front garden offers a pleasant space, while a private patio at
-        the back features a Weber braai for outdoor cooking and a washing
-        machine for laundry needs. Dedicated parking is available on the wide,
-        paved verge in front of the property, suitable for one vehicle.
-        <br /><br />
-        The surrounding area presents a wealth of activities and attractions. Guests
-        can easily access opportunities for hiking, bird watching, wine tasting,
-        cycling, and swimming, ensuring a memorable stay.
+  <div class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6 text-center">Clarkia Cottage</h1>
+    <div class="mb-8">
+      <Carousel />
+    </div>
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4">About the Space</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Clarkia Cottage is a beautifully restored 2-bedroom heritage cottage
+        providing comfortable accomodation for up to four guests. The main
+        bedroom features a king-size bed and a full en-suite bathroom. The
+        second bedroom contains two single beds access to a shower-only
+        bathroom. The open-plan living area is designed for relaxation,
+        featuring a charming combustion wood fireplace and a smart TV with
+        streaming services over reliable WiFi. An inverter and battery-operated
+        lights are available if there is loadshedding. The kitchen is
+        thoughtfully equipped for all your self-catering needs, including a
+        two-ring gas hob, convection/microwave oven, air fryer, and a full-size
+        fridge/freezer. We have a Nespresso machine for coffee lovers. A kettle
+        and toaster are also provided. Step outside to a small, tranquil front
+        garden or enjoy the private back patio, complete with a Weber braai for
+        outdoor cooking and a washing machine for laundry. Dedicated parking is
+        available on the wide, paved verge in front of the property, suitable
+        for one vehicle.
       </p>
     </section>
-
-    <section class="amenities">
-      <h2>Amenities</h2>
-      <ul>
-        <li>King-size Bed</li>
-        <li>High-speed Wi-Fi</li>
-        <li>Fully-equipped Kitchenette</li>
-        <li>Nespresso Machine</li>
-        <li>Private Garden & Patio</li>
-        <li>Secure Off-street Parking</li>
-        <li>Smart TV with Netflix</li>
-        <li>En-suite Bathroom with Shower</li>
-      </ul>
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4">Amenities</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Kitchen & Dining:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1">
+            <li>Fully-equipped Kitchenette</li>
+            <li>Full-size Fridge/Freezer</li>
+            <li>Two-ring Gas Hob</li>
+            <li>Convection/Microwave Oven & Air Fryer</li>
+            <li>Nespresso Machine, Kettle & Toaster</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Bedrooms:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1">
+            <li>Main Bedroom: King-size Bed</li>
+            <li>Second Bedroom: Two Single Beds</li>
+            <li>En-suite for Main Bedroom</li>
+            <li>Second, Shower Only Bathroom</li>
+            <li>Towels Provided</li>
+            <li>Hairdryer</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Comfort & Convenience:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1">
+            <li>High-speed Fibre Wi-Fi</li>
+            <li>
+              Inverter & Battery Powered Lights (ensures 24/7 internet and
+              lights)
+            </li>
+            <li>Smart TV with Netflix</li>
+            <li>Combustion Wood Fireplace</li>
+            <li>Full Alarm System</li>
+            <li>Ironing Board & Iron</li>
+            <li>Camping Cot (available on request)</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Outdoor & Parking:</h3>
+          <ul class="list-disc list-inside text-gray-700 space-y-1">
+            <li>Front Garden with wooden deck</li>
+            <li>Private Back Patio with Weber Braai</li>
+            <li>Dedicated Off-street Parking Verge for one vehicle</li>
+          </ul>
+        </div>
+      </div>
     </section>
-
-    <section class="booking-section">
+    <section class="mb-16 flex justify-center">
       <a
         href="https://book.nightsbridge.com/12344"
         target="_blank"
-        class="btn btn-large"
+        rel="noopener"
+        class="w-full sm:w-auto"
       >
-        Check Availability & Book Now
+        <button
+          type="button"
+          class="btn btn-primary w-full sm:w-auto text-lg px-8 py-4"
+        >
+          Check Availability & Book Now
+        </button>
       </a>
     </section>
   </div>
 
   <!-- Sticky Book Now Banner for Mobile -->
-  <div class="sticky-book-banner" id="sticky-banner">
-    <div class="banner-content">
-      <a
-        href="https://book.nightsbridge.com/12344"
-        target="_blank"
-        class="btn btn-large"
-      >
+  <div
+    class="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 shadow-lg flex items-center justify-between px-4 py-3"
+    id="sticky-banner"
+  >
+    <a
+      href="https://book.nightsbridge.com/12344"
+      target="_blank"
+      rel="noopener"
+      class="flex-1"
+    >
+      <button type="button" class="btn btn-primary w-full text-base">
         Check Availability & Book Now
-      </a>
-      <button class="banner-close" aria-label="Close banner" id="banner-close"
-        >✕</button
-      >
-    </div>
+      </button>
+    </a>
+    <button
+      class="ml-4 text-gray-400 hover:text-gray-700 focus:outline-none"
+      aria-label="Close banner"
+      id="banner-close"
+    >
+      &#10005;
+    </button>
   </div>
 
-  <!-- <script type="module">
-    import PhotoSwipeLightbox from 'photoswipe/lightbox';
-    import 'photoswipe/dist/photoswipe.css';
-    import 'swiper/element/bundle';
-    document.addEventListener('DOMContentLoaded', function() {
-
-      // Initialize PhotoSwipe
-      const lightbox = new PhotoSwipeLightbox({
-        gallery: '.carousel-container',
-        children: '.pswp-gallery-item',
-        pswpModule: () => import('photoswipe')
-      });
-      lightbox.init();
-    });
-  </script> -->
-
   <script>
-    // import Swiper from 'swiper/bundle';
-    // import 'swiper/css/bundle';
-
-    // // Swiper initialize
-    // const swiper = new Swiper('.swiper', {
-    //   // Optional parameters
-    //   loop: true,
-
-    //   // If we need pagination
-    //   pagination: {
-    //     el: '.swiper-pagination',
-    //   },
-
-    //   // Navigation arrows
-    //   navigation: {
-    //     nextEl: '.swiper-button-next',
-    //     prevEl: '.swiper-button-prev',
-    //   },
-
-    //   // And if we need scrollbar
-    //   scrollbar: {
-    //     el: '.swiper-scrollbar',
-    //   },
-    // });
-
-    // Sticky banner functionality
     document.addEventListener('DOMContentLoaded', function () {
       const stickyBanner = document.getElementById('sticky-banner');
       const bannerClose = document.getElementById('banner-close');
-      const bookingSection = document.querySelector('.booking-section');
-
-      if (stickyBanner && bannerClose && bookingSection) {
-        // Helper function to check if we're on mobile
-        const isMobile = () => window.innerWidth <= 768;
-
-        // Close banner functionality
+      if (stickyBanner && bannerClose) {
         bannerClose.addEventListener('click', () => {
           stickyBanner.style.display = 'none';
-          // Store preference in localStorage
           localStorage.setItem('banner-closed', 'true');
         });
-
-        // Check if banner was previously closed
         if (localStorage.getItem('banner-closed') === 'true') {
           stickyBanner.style.display = 'none';
         }
-
-        // Intersection Observer to hide banner when booking section is visible
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                stickyBanner.style.display = 'none';
-              } else {
-                // Only show banner on mobile and if it wasn't manually closed
-                if (
-                  isMobile() &&
-                  localStorage.getItem('banner-closed') !== 'true'
-                ) {
-                  stickyBanner.style.display = 'block';
-                }
-              }
-            });
-          },
-          {
-            threshold: 0.1, // Trigger when 10% of booking section is visible
-          },
-        );
-
-        observer.observe(bookingSection);
-
-        // Handle window resize to show/hide banner appropriately
-        window.addEventListener('resize', () => {
-          if (!isMobile()) {
-            stickyBanner.style.display = 'none';
-          } else if (localStorage.getItem('banner-closed') !== 'true') {
-            stickyBanner.style.display = 'block';
-          }
-        });
       }
     });
   </script>
 </BaseLayout>
-
