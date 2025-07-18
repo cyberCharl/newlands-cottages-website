@@ -1,4 +1,5 @@
 ---
+import CarouselDots from './CarouselDots.astro';
 import CarouselSlide from './CarouselSlide.astro';
 
 export interface Props {
@@ -18,7 +19,7 @@ const { image_list } = Astro.props;
 
   <!-- Navigation Buttons -->
   <button
-    class="carousel-btn carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
+    class="carousel-btn carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
   >
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"
@@ -27,7 +28,7 @@ const { image_list } = Astro.props;
   </button>
 
   <button
-    class="carousel-btn carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
+    class="carousel-btn carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
   >
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -35,23 +36,7 @@ const { image_list } = Astro.props;
   </button>
 
   <!-- Dots Indicator -->
-  <div class="carousel-dots flex justify-center mt-4 space-x-2">
-    <button
-      class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
-      data-slide="0"></button>
-    <button
-      class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
-      data-slide="1"></button>
-    <button
-      class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
-      data-slide="2"></button>
-    <button
-      class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
-      data-slide="3"></button>
-    <button
-      class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
-      data-slide="4"></button>
-  </div>
+  <CarouselDots count={image_list.length} />
 </div>
 
 <script>

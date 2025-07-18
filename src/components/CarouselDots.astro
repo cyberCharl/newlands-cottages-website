@@ -1,0 +1,18 @@
+---
+export interface Props {
+  count: number;
+}
+
+const { count } = Astro.props;
+---
+
+<div class="carousel-dots flex justify-center mt-4 space-x-2">
+  {
+    Array.from({ length: count }).map((_, i) => (
+      <button
+        class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
+        data-slide={i}
+      />
+    ))
+  }
+</div>
