@@ -1,4 +1,5 @@
 ---
+import { joinWithBase } from '../utils/url';
 import logo from '../assets/logo.png';
 import NavItem from './NavItem.astro';
 ---
@@ -9,16 +10,11 @@ import NavItem from './NavItem.astro';
   >
     <!-- Logo & Text -->
     <a
-      href="/"
+      href={joinWithBase(import.meta.env.BASE_URL, '/')}
       class="flex items-center space-x-2 sm:space-x-3 rtl:space-x-reverse"
     >
-      <img
-        src={logo.src}
-        class="h-8 sm:h-10 w-auto"
-        alt="Newlands Cottages Logo"
-      />
-      <span
-        class="self-center text-lg sm:text-2xl font-bold whitespace-nowrap text-emerald-900"
+      <img src={logo.src} class="h-8 sm:h-10 w-auto" alt="Newlands Cottages Logo" />
+      <span class="self-center text-lg sm:text-2xl font-bold whitespace-nowrap text-emerald-900"
         >Newlands Cottages</span
       >
     </a>
