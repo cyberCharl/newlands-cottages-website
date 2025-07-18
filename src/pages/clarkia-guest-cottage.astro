@@ -1,6 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ImageCarousel from '../components/ImageCarousel.astro';
+import cottageImage from '../assets/front-garden-2.jpg';
+
 import BookBanner from '../components/BookBanner.astro';
 import AmenitiesSection from '../components/AmenitiesSection.astro';
 ---
@@ -12,7 +14,11 @@ import AmenitiesSection from '../components/AmenitiesSection.astro';
   <div class="max-w-3xl mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold mb-6 text-center">Clarkia Cottage</h1>
     <div class="mb-8">
-      <ImageCarousel />
+      <Image
+        src={cottageImage}
+        alt="Front garden of Clarkia Cottage"
+        class="w-full max-h-96 mx-auto mb-8 shadow-md object-cover"
+      />
     </div>
     <section class="mb-10">
       <h2 class="text-2xl font-semibold mb-4">About the Space</h2>
