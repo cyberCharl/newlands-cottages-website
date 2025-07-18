@@ -1,0 +1,16 @@
+---
+import Image from 'astro/components/Image.astro';
+
+export interface Props {
+  source: ImageMetadata;
+  alt_text: string;
+}
+
+const { source, alt_text } = Astro.props;
+---
+
+<div class="carousel-slide flex-shrink-0 w-full">
+  <a href={source.src} class="glightbox" data-gallery="cottage">
+    <Image src={source} alt={alt_text} class="w-full h-64 md:h-96 object-cover cursor-pointer" />
+  </a>
+</div>

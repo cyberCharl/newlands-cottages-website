@@ -1,74 +1,18 @@
+---
+import CarouselSlide from './CarouselSlide.astro';
+
+export interface Props {
+  image_list: { image: ImageMetadata; alt_text: string }[];
+}
+
+const { image_list } = Astro.props;
+---
+
 <!-- Image Carousel -->
 <div class="carousel-container relative max-w-4xl mx-auto mb-8">
   <div class="carousel-wrapper overflow-hidden rounded-2xl shadow-md">
-    <div
-      class="carousel-track flex transition-transform duration-300 ease-in-out"
-    >
-      <div class="carousel-slide flex-shrink-0 w-full">
-        <a
-          href="/src/assets/front-garden-1.jpg"
-          class="glightbox"
-          data-gallery="cottage"
-        >
-          <img
-            src="/src/assets/front-garden-1.jpg"
-            alt="Front garden view 1"
-            class="w-full h-64 md:h-96 object-cover cursor-pointer"
-          />
-        </a>
-      </div>
-      <div class="carousel-slide flex-shrink-0 w-full">
-        <a
-          href="/src/assets/living-room-1.jpg"
-          class="glightbox"
-          data-gallery="cottage"
-        >
-          <img
-            src="/src/assets/living-room-1.jpg"
-            alt="Living room view 1"
-            class="w-full h-64 md:h-96 object-cover cursor-pointer"
-          />
-        </a>
-      </div>
-      <div class="carousel-slide flex-shrink-0 w-full">
-        <a
-          href="/src/assets/kitchen-1.jpg"
-          class="glightbox"
-          data-gallery="cottage"
-        >
-          <img
-            src="/src/assets/kitchen-1.jpg"
-            alt="Kitchen view"
-            class="w-full h-64 md:h-96 object-cover cursor-pointer"
-          />
-        </a>
-      </div>
-      <div class="carousel-slide flex-shrink-0 w-full">
-        <a
-          href="/src/assets/main-bedroom-1.jpg"
-          class="glightbox"
-          data-gallery="cottage"
-        >
-          <img
-            src="/src/assets/main-bedroom-1.jpg"
-            alt="Main bedroom view"
-            class="w-full h-64 md:h-96 object-cover cursor-pointer"
-          />
-        </a>
-      </div>
-      <div class="carousel-slide flex-shrink-0 w-full">
-        <a
-          href="/src/assets/en-suite-bathroom-1.jpg"
-          class="glightbox"
-          data-gallery="cottage"
-        >
-          <img
-            src="/src/assets/en-suite-bathroom-1.jpg"
-            alt="En-suite bathroom view"
-            class="w-full h-64 md:h-96 object-cover cursor-pointer"
-          />
-        </a>
-      </div>
+    <div class="carousel-track flex transition-transform duration-300 ease-in-out">
+      {image_list.map((item) => <CarouselSlide source={item.image} alt_text={item.alt_text} />)}
     </div>
   </div>
 
@@ -77,11 +21,8 @@
     class="carousel-btn carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
   >
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M15 19l-7-7 7-7"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"
+      ></path>
     </svg>
   </button>
 
@@ -89,11 +30,7 @@
     class="carousel-btn carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
   >
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M9 5l7 7-7 7"></path>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
     </svg>
   </button>
 
