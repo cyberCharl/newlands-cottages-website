@@ -1,98 +1,129 @@
 ---
-import { Image } from 'astro:assets';
+import CarouselDots from './CarouselDots.astro';
+import CarouselSlide from './CarouselSlide.astro';
 
-import { Fancybox } from '@fancyapps/ui';
-import '@fancyapps/ui/dist/fancybox/fancybox.css';
+export interface Props {
+  image_list: { image: ImageMetadata; alt_text: string }[];
+}
 
-// Image imports
-import frontGarden2 from '../assets/front-garden-2.jpg';
-import livingRoom1 from '../assets/living-room-1.jpg';
-import kitchen1 from '../assets/kitchen-1.jpg';
-import fireplace from '../assets/fireplace.jpg';
-import mainBedroom1 from '../assets/main-bedroom-1.jpg';
-import secondBedroom1 from '../assets/second-bedroom-1.jpg';
-import hallway from '../assets/hallway.jpg';
-import enSuiteBathroom1 from '../assets/en-suite-bathroom-1.jpg';
-import separateBathroom1 from '../assets/separate-bathroom-1.jpg';
-import livingRoom3 from '../assets/living-room-3.jpeg';
-import livingRoom4 from '../assets/living-room-4.jpeg';
+const { image_list } = Astro.props;
 ---
 
-<div>
-  <Image
-    src={frontGarden2}
-    alt="Private garden and outdoor space"
-    class="object-cover w-full h-full"
-  />
+<!-- Image Carousel -->
+<div class="carousel-container relative max-w-4xl mx-auto mb-8">
+  <div class="carousel-wrapper overflow-hidden rounded-2xl shadow-md">
+    <div class="carousel-track flex transition-transform duration-300 ease-in-out">
+      {image_list.map((item) => <CarouselSlide source={item.image} alt_text={item.alt_text} />)}
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <button
+    class="carousel-btn carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"
+      ></path>
+    </svg>
+  </button>
+
+  <button
+    class="carousel-btn carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-30 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+    </svg>
+  </button>
+
+  <!-- Dots Indicator -->
+  <CarouselDots count={image_list.length} />
 </div>
 
-<!-- <div data-carousel-item class="duration-700 ease-in-out">
-  <Image
-    src={livingRoom1}
-    alt="Living room with comfortable seating area"
-    class="object-cover w-full h-full"
-  />
-</div>
-<div data-carousel-item class="duration-700 ease-in-out">
-  <Image
-    src={kitchen1}
-    alt="Fully equipped kitchen with modern appliances"
-    class="object-cover w-full h-full"
-  />
-</div>
-<div data-carousel-item class="duration-700 ease-in-out">
-  <Image
-    src={fireplace}
-    alt="Cozy fireplace in the living area"
-    class="object-cover w-full h-full"
-  />
-</div>
-<div data-carousel-item class="duration-700 ease-in-out">
-  <Image
-    src={mainBedroom1}
-    alt="Main bedroom with king-size bed"
-    class="object-cover w-full h-full"
-  />
-</div>
-<div data-carousel-item class="duration-700 ease-in-out">
-  <Image
-    src={secondBedroom1}
-    alt="Second bedroom with twin beds"
-    class="object-cover w-full h-full"
-  />
-</div>
-<div data-carousel-item class="duration-700 ease-in-out">
-  <Image
-    src={hallway}
-    alt="Welcoming hallway entrance"
-    class="object-cover w-full h-full"
-  />
-</div>
-<div data-carousel-item class="duration-700 ease-in-out">
-  <Image
-    src={enSuiteBathroom1}
-    alt="En-suite bathroom with shower and modern fittings"
-    class="object-cover w-full h-full"
-  />
-</div>
-<div data-carousel-item class="duration-700 ease-in-out">
-  <Image
-    src={separateBathroom1}
-    alt="Separate bathroom with shower"
-    class="object-cover w-full h-full"
-  />
-</div>
-<div data-carousel-item class="duration-700 ease-in-out">
-  <Image
-    src={livingRoom3}
-    alt="Back door to back patio with washing machine visible"
-    class="object-cover w-full h-full"
-  />
-</div>
-<div data-carousel-item class="duration-700 ease-in-out">
-  <Image
-    src={livingRoom4}
-    alt="Dining area with view of back patio seating area"
-    class="object-cover w-full h-full"
-  />
-</div> -->
+<script>
+  import GLightbox from 'glightbox';
+  import 'glightbox/dist/css/glightbox.min.css';
+
+  // Initialize GLightbox
+  const lightbox = GLightbox({
+    touchNavigation: true,
+    loop: true,
+    autoplayVideos: false,
+  });
+
+  // Carousel functionality
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll<HTMLButtonElement>('.dot');
+  const track = document.querySelector<HTMLDivElement>('.carousel-track');
+  const prevBtn = document.querySelector<HTMLButtonElement>('.carousel-prev');
+  const nextBtn = document.querySelector<HTMLButtonElement>('.carousel-next');
+
+  function updateCarousel() {
+    if (track) {
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    // Update dots
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('bg-gray-800', index === currentSlide);
+      dot.classList.toggle('bg-gray-400', index !== currentSlide);
+    });
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateCarousel();
+  }
+
+  // Event listeners
+  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+  // Dot navigation
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentSlide = index;
+      updateCarousel();
+    });
+  });
+
+  // Touch/swipe support
+  let startX = 0;
+  let isDragging = false;
+
+  if (track) {
+    track.addEventListener('touchstart', (e: TouchEvent) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    });
+
+    track.addEventListener('touchmove', (e: TouchEvent) => {
+      if (!isDragging) return;
+      e.preventDefault();
+    });
+
+    track.addEventListener('touchend', (e: TouchEvent) => {
+      if (!isDragging) return;
+      isDragging = false;
+
+      const endX = e.changedTouches[0].clientX;
+      const diff = startX - endX;
+
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+    });
+  }
+
+  // Initialize
+  updateCarousel();
+</script>

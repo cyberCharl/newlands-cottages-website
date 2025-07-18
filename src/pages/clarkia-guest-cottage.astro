@@ -1,8 +1,35 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ImageCarousel from '../components/ImageCarousel.astro';
-import BookBanner from '../components/BookBanner.astro';
 import AmenitiesSection from '../components/AmenitiesSection.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BookBanner from '../components/BookBanner.astro';
+import ImageCarousel from '../components/ImageCarousel.astro';
+
+// Image imports
+import frontGarden2 from '../assets/front-garden-2.jpg';
+import livingRoom1 from '../assets/living-room-1.jpg';
+import kitchen1 from '../assets/kitchen-1.jpg';
+import fireplace from '../assets/fireplace.jpg';
+import mainBedroom1 from '../assets/main-bedroom-1.jpg';
+import secondBedroom1 from '../assets/second-bedroom-1.jpg';
+import hallway from '../assets/hallway.jpg';
+import enSuiteBathroom1 from '../assets/en-suite-bathroom-1.jpg';
+import separateBathroom1 from '../assets/separate-bathroom-1.jpg';
+import livingRoom3 from '../assets/living-room-3.jpeg';
+import livingRoom4 from '../assets/living-room-4.jpeg';
+
+let image_list = [
+  { image: frontGarden2, alt_text: 'Front garden with wooden deck' },
+  { image: livingRoom1, alt_text: 'Living room with comfortable seating area' },
+  { image: kitchen1, alt_text: 'Fully equipped kitchen with modern appliances' },
+  { image: fireplace, alt_text: 'Cozy fireplace in the living area' },
+  { image: mainBedroom1, alt_text: 'Main bedroom with king-size bed' },
+  { image: secondBedroom1, alt_text: 'Second bedroom with two single beds' },
+  { image: hallway, alt_text: 'Hallway connecting rooms' },
+  { image: enSuiteBathroom1, alt_text: 'En-suite bathroom with shower and modern fittings' },
+  { image: separateBathroom1, alt_text: 'Separate shower-only bathroom' },
+  { image: livingRoom3, alt_text: 'Back door to back patio with washing machine visible' },
+  { image: livingRoom4, alt_text: 'Dining area with view of back patio seating area' },
+];
 ---
 
 <BaseLayout
@@ -11,28 +38,22 @@ import AmenitiesSection from '../components/AmenitiesSection.astro';
 >
   <div class="max-w-3xl mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold mb-6 text-center">Clarkia Cottage</h1>
-    <div class="mb-8">
-      <ImageCarousel />
-    </div>
+    <ImageCarousel image_list={image_list} />
     <section class="mb-10">
       <h2 class="text-2xl font-semibold mb-4">About the Space</h2>
       <p class="text-gray-700 leading-relaxed">
-        Clarkia Cottage is a beautifully restored 2-bedroom heritage cottage
-        providing comfortable accomodation for up to four guests. The main
-        bedroom features a king-size bed and a full en-suite bathroom. The
-        second bedroom contains two single beds access to a shower-only
-        bathroom. The open-plan living area is designed for relaxation,
-        featuring a charming combustion wood fireplace and a smart TV with
-        streaming services over reliable WiFi. An inverter and battery-operated
-        lights are available if there is loadshedding. The kitchen is
-        thoughtfully equipped for all your self-catering needs, including a
-        two-ring gas hob, convection/microwave oven, air fryer, and a full-size
-        fridge/freezer. We have a Nespresso machine for coffee lovers. A kettle
-        and toaster are also provided. Step outside to a small, tranquil front
-        garden or enjoy the private back patio, complete with a Weber braai for
-        outdoor cooking and a washing machine for laundry. Dedicated parking is
-        available on the wide, paved verge in front of the property, suitable
-        for one vehicle.
+        Clarkia Cottage is a beautifully restored 2-bedroom heritage cottage providing comfortable
+        accomodation for up to four guests. The main bedroom features a king-size bed and a full
+        en-suite bathroom. The second bedroom contains two single beds access to a shower-only
+        bathroom. The open-plan living area is designed for relaxation, featuring a charming
+        combustion wood fireplace and a smart TV with streaming services over reliable WiFi. An
+        inverter and battery-operated lights are available if there is loadshedding. The kitchen is
+        thoughtfully equipped for all your self-catering needs, including a two-ring gas hob,
+        convection/microwave oven, air fryer, and a full-size fridge/freezer. We have a Nespresso
+        machine for coffee lovers. A kettle and toaster are also provided. Step outside to a small,
+        tranquil front garden or enjoy the private back patio, complete with a Weber braai for
+        outdoor cooking and a washing machine for laundry. Dedicated parking is available on the
+        wide, paved verge in front of the property, suitable for one vehicle.
       </p>
     </section>
     <section class="mb-10">
@@ -89,16 +110,13 @@ import AmenitiesSection from '../components/AmenitiesSection.astro';
         class="w-full sm:w-auto"
         id="main-booking-btn"
       >
-        <button
-          type="button"
-          class="btn btn-primary w-full sm:w-auto text-lg px-8 py-4"
-        >
+        <button type="button" class="btn btn-primary w-full sm:w-auto text-lg px-8 py-4">
           Check Availability & Book Now
         </button>
       </a>
     </section>
   </div>
-
-  <!-- Sticky Book Now Banner for Mobile -->
-  <BookBanner />
 </BaseLayout>
+
+<!-- Sticky Book Now Banner -->
+<BookBanner />
