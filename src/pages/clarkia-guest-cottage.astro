@@ -11,216 +11,220 @@ import AmenitiesSection from '../components/AmenitiesSection.astro';
   title="Clarkia Cottage | Newlands Cottages Accommodation Details"
   description="View photos, amenities, and details for our private self-catering cottage. Features a full kitchen, private garden, and modern comforts."
 >
-  <!-- Image Carousel -->
-  <div class="carousel-container relative max-w-4xl mx-auto mb-8">
-    <div class="carousel-wrapper overflow-hidden rounded-lg">
-      <div
-        class="carousel-track flex transition-transform duration-300 ease-in-out"
-      >
-        <div class="carousel-slide flex-shrink-0 w-full">
-          <a
-            href="/src/assets/front-garden-1.jpg"
-            class="glightbox"
-            data-gallery="cottage"
-          >
-            <img
-              src="/src/assets/front-garden-1.jpg"
-              alt="Front garden view 1"
-              class="w-full h-64 md:h-96 object-cover cursor-pointer"
-            />
-          </a>
-        </div>
-        <div class="carousel-slide flex-shrink-0 w-full">
-          <a
-            href="/src/assets/living-room-1.jpg"
-            class="glightbox"
-            data-gallery="cottage"
-          >
-            <img
-              src="/src/assets/living-room-1.jpg"
-              alt="Living room view 1"
-              class="w-full h-64 md:h-96 object-cover cursor-pointer"
-            />
-          </a>
-        </div>
-        <div class="carousel-slide flex-shrink-0 w-full">
-          <a
-            href="/src/assets/kitchen-1.jpg"
-            class="glightbox"
-            data-gallery="cottage"
-          >
-            <img
-              src="/src/assets/kitchen-1.jpg"
-              alt="Kitchen view"
-              class="w-full h-64 md:h-96 object-cover cursor-pointer"
-            />
-          </a>
-        </div>
-        <div class="carousel-slide flex-shrink-0 w-full">
-          <a
-            href="/src/assets/main-bedroom-1.jpg"
-            class="glightbox"
-            data-gallery="cottage"
-          >
-            <img
-              src="/src/assets/main-bedroom-1.jpg"
-              alt="Main bedroom view"
-              class="w-full h-64 md:h-96 object-cover cursor-pointer"
-            />
-          </a>
-        </div>
-        <div class="carousel-slide flex-shrink-0 w-full">
-          <a
-            href="/src/assets/en-suite-bathroom-1.jpg"
-            class="glightbox"
-            data-gallery="cottage"
-          >
-            <img
-              src="/src/assets/en-suite-bathroom-1.jpg"
-              alt="En-suite bathroom view"
-              class="w-full h-64 md:h-96 object-cover cursor-pointer"
-            />
-          </a>
+  <div class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6 text-center">Clarkia Cottage</h1>
+    <!-- Image Carousel -->
+    <div class="carousel-container relative max-w-4xl mx-auto mb-8">
+      <div class="carousel-wrapper overflow-hidden rounded-2xl shadow-md">
+        <div
+          class="carousel-track flex transition-transform duration-300 ease-in-out"
+        >
+          <div class="carousel-slide flex-shrink-0 w-full">
+            <a
+              href="/src/assets/front-garden-1.jpg"
+              class="glightbox"
+              data-gallery="cottage"
+            >
+              <img
+                src="/src/assets/front-garden-1.jpg"
+                alt="Front garden view 1"
+                class="w-full h-64 md:h-96 object-cover cursor-pointer"
+              />
+            </a>
+          </div>
+          <div class="carousel-slide flex-shrink-0 w-full">
+            <a
+              href="/src/assets/living-room-1.jpg"
+              class="glightbox"
+              data-gallery="cottage"
+            >
+              <img
+                src="/src/assets/living-room-1.jpg"
+                alt="Living room view 1"
+                class="w-full h-64 md:h-96 object-cover cursor-pointer"
+              />
+            </a>
+          </div>
+          <div class="carousel-slide flex-shrink-0 w-full">
+            <a
+              href="/src/assets/kitchen-1.jpg"
+              class="glightbox"
+              data-gallery="cottage"
+            >
+              <img
+                src="/src/assets/kitchen-1.jpg"
+                alt="Kitchen view"
+                class="w-full h-64 md:h-96 object-cover cursor-pointer"
+              />
+            </a>
+          </div>
+          <div class="carousel-slide flex-shrink-0 w-full">
+            <a
+              href="/src/assets/main-bedroom-1.jpg"
+              class="glightbox"
+              data-gallery="cottage"
+            >
+              <img
+                src="/src/assets/main-bedroom-1.jpg"
+                alt="Main bedroom view"
+                class="w-full h-64 md:h-96 object-cover cursor-pointer"
+              />
+            </a>
+          </div>
+          <div class="carousel-slide flex-shrink-0 w-full">
+            <a
+              href="/src/assets/en-suite-bathroom-1.jpg"
+              class="glightbox"
+              data-gallery="cottage"
+            >
+              <img
+                src="/src/assets/en-suite-bathroom-1.jpg"
+                alt="En-suite bathroom view"
+                class="w-full h-64 md:h-96 object-cover cursor-pointer"
+              />
+            </a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Navigation Buttons -->
-    <button
-      class="carousel-btn carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
-    >
-      <svg
-        class="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+      <!-- Navigation Buttons -->
+      <button
+        class="carousel-btn carousel-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
       >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M15 19l-7-7 7-7"></path>
-      </svg>
-    </button>
-
-    <button
-      class="carousel-btn carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
-    >
-      <svg
-        class="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M9 5l7 7-7 7"></path>
-      </svg>
-    </button>
-
-    <!-- Dots Indicator -->
-    <div class="carousel-dots flex justify-center mt-4 space-x-2">
-      <button
-        class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
-        data-slide="0"></button>
-      <button
-        class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
-        data-slide="1"></button>
-      <button
-        class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
-        data-slide="2"></button>
-      <button
-        class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
-        data-slide="3"></button>
-      <button
-        class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
-        data-slide="4"></button>
-    </div>
-  </div>
-  <section class="mb-10">
-    <h2 class="text-2xl font-semibold mb-4">About the Space</h2>
-    <p class="text-gray-700 leading-relaxed">
-      Clarkia Cottage is a beautifully restored 2-bedroom heritage cottage
-      providing comfortable accomodation for up to four guests. The main bedroom
-      features a king-size bed and a full en-suite bathroom. The second bedroom
-      contains two single beds access to a shower-only bathroom. The open-plan
-      living area is designed for relaxation, featuring a charming combustion
-      wood fireplace and a smart TV with streaming services over reliable WiFi.
-      An inverter and battery-operated lights are available if there is
-      loadshedding. The kitchen is thoughtfully equipped for all your
-      self-catering needs, including a two-ring gas hob, convection/microwave
-      oven, air fryer, and a full-size fridge/freezer. We have a Nespresso
-      machine for coffee lovers. A kettle and toaster are also provided. Step
-      outside to a small, tranquil front garden or enjoy the private back patio,
-      complete with a Weber braai for outdoor cooking and a washing machine for
-      laundry. Dedicated parking is available on the wide, paved verge in front
-      of the property, suitable for one vehicle.
-    </p>
-  </section>
-  <section class="mb-10">
-    <h2 class="text-2xl font-semibold mb-4">Amenities</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <AmenitiesSection
-        heading="Kitchen & Dining:"
-        items={[
-          'Fully-equipped Kitchenette',
-          'Full-size Fridge/Freezer',
-          'Two-ring Gas Hob',
-          'Convection/Microwave Oven & Air Fryer',
-          'Nespresso Machine, Kettle & Toaster',
-        ]}
-      />
-      <AmenitiesSection
-        heading="Bedrooms:"
-        items={[
-          'Main Bedroom: King-size Bed',
-          'Second Bedroom: Two Single Beds',
-          'En-suite for Main Bedroom',
-          'Second, Shower Only Bathroom',
-          'Towels Provided',
-          'Hairdryer',
-        ]}
-      />
-      <AmenitiesSection
-        heading="Comfort & Convenience:"
-        items={[
-          'High-speed Fibre Wi-Fi',
-          'Inverter & Battery Powered Lights (ensures 24/7 internet and lights)',
-          'Smart TV with Netflix',
-          'Combustion Wood Fireplace',
-          'Full Alarm System',
-          'Ironing Board & Iron',
-          'Camping Cot (available on request)',
-        ]}
-      />
-      <AmenitiesSection
-        heading="Outdoor & Parking:"
-        items={[
-          'Front Garden with wooden deck',
-          'Private Back Patio with Weber Braai',
-          'Dedicated Off-street Parking Verge for one vehicle',
-        ]}
-      />
-    </div>
-  </section>
-  <section class="flex justify-center">
-    <a
-      href="https://book.nightsbridge.com/12344"
-      target="_blank"
-      rel="noopener"
-      class="w-full sm:w-auto"
-      id="main-booking-btn"
-    >
-      <button
-        type="button"
-        class="btn btn-primary w-full sm:w-auto text-lg px-8 py-4"
-      >
-        Check Availability & Book Now
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"></path>
+        </svg>
       </button>
-    </a>
-  </section>
+
+      <button
+        class="carousel-btn carousel-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+
+      <!-- Dots Indicator -->
+      <div class="carousel-dots flex justify-center mt-4 space-x-2">
+        <button
+          class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
+          data-slide="0"></button>
+        <button
+          class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
+          data-slide="1"></button>
+        <button
+          class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
+          data-slide="2"></button>
+        <button
+          class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
+          data-slide="3"></button>
+        <button
+          class="dot w-3 h-3 rounded-full bg-gray-400 hover:bg-gray-600 transition-colors"
+          data-slide="4"></button>
+      </div>
+    </div>
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4">About the Space</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Clarkia Cottage is a beautifully restored 2-bedroom heritage cottage
+        providing comfortable accomodation for up to four guests. The main
+        bedroom features a king-size bed and a full en-suite bathroom. The
+        second bedroom contains two single beds access to a shower-only
+        bathroom. The open-plan living area is designed for relaxation,
+        featuring a charming combustion wood fireplace and a smart TV with
+        streaming services over reliable WiFi. An inverter and battery-operated
+        lights are available if there is loadshedding. The kitchen is
+        thoughtfully equipped for all your self-catering needs, including a
+        two-ring gas hob, convection/microwave oven, air fryer, and a full-size
+        fridge/freezer. We have a Nespresso machine for coffee lovers. A kettle
+        and toaster are also provided. Step outside to a small, tranquil front
+        garden or enjoy the private back patio, complete with a Weber braai for
+        outdoor cooking and a washing machine for laundry. Dedicated parking is
+        available on the wide, paved verge in front of the property, suitable
+        for one vehicle.
+      </p>
+    </section>
+    <section class="mb-10">
+      <h2 class="text-2xl font-semibold mb-4">Amenities</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <AmenitiesSection
+          heading="Kitchen & Dining:"
+          items={[
+            'Fully-equipped Kitchenette',
+            'Full-size Fridge/Freezer',
+            'Two-ring Gas Hob',
+            'Convection/Microwave Oven & Air Fryer',
+            'Nespresso Machine, Kettle & Toaster',
+          ]}
+        />
+        <AmenitiesSection
+          heading="Bedrooms:"
+          items={[
+            'Main Bedroom: King-size Bed',
+            'Second Bedroom: Two Single Beds',
+            'En-suite for Main Bedroom',
+            'Second, Shower Only Bathroom',
+            'Towels Provided',
+            'Hairdryer',
+          ]}
+        />
+        <AmenitiesSection
+          heading="Comfort & Convenience:"
+          items={[
+            'High-speed Fibre Wi-Fi',
+            'Inverter & Battery Powered Lights (ensures 24/7 internet and lights)',
+            'Smart TV with Netflix',
+            'Combustion Wood Fireplace',
+            'Full Alarm System',
+            'Ironing Board & Iron',
+            'Camping Cot (available on request)',
+          ]}
+        />
+        <AmenitiesSection
+          heading="Outdoor & Parking:"
+          items={[
+            'Front Garden with wooden deck',
+            'Private Back Patio with Weber Braai',
+            'Dedicated Off-street Parking Verge for one vehicle',
+          ]}
+        />
+      </div>
+    </section>
+    <section class="flex justify-center">
+      <a
+        href="https://book.nightsbridge.com/12344"
+        target="_blank"
+        rel="noopener"
+        class="w-full sm:w-auto"
+        id="main-booking-btn"
+      >
+        <button
+          type="button"
+          class="btn btn-primary w-full sm:w-auto text-lg px-8 py-4"
+        >
+          Check Availability & Book Now
+        </button>
+      </a>
+    </section>
+  </div>
 </BaseLayout>
 
 <!-- Sticky Book Now Banner -->
