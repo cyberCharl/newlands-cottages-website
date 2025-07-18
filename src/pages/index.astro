@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import heroImage from '../assets/front-garden-1.jpg';
 import hallwayImage from '../assets/hallway.jpg';
+import { joinWithBase } from '../utils/url';
 ---
 
 <BaseLayout
@@ -33,7 +34,13 @@ import hallwayImage from '../assets/hallway.jpg';
         blend of historic charm and modern comfort.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/clarkia-guest-cottage" class="w-full sm:w-auto">
+        <a
+          href={joinWithBase(
+            import.meta.env.BASE_URL,
+            '/clarkia-guest-cottage',
+          )}
+          class="w-full sm:w-auto"
+        >
           <button type="button" class="w-full sm:w-auto btn btn-primary">
             View The Cottage
           </button>
