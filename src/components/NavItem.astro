@@ -10,7 +10,11 @@ const { href, display_name } = Astro.props;
 <li>
   <a
     href={`${import.meta.env.BASE_URL}${href}`}
-    class="block m-2 py-2 px-3 text-emerald-900 font-medium rounded-2xl bg-gray-100 hover:underline hover:text-emerald-950 transition-colors duration-300"
+    class="block m-2 py-2 px-3 text-emerald-900 font-medium transition-colors duration-300
+      bg-gray-100 rounded-2xl
+      hover:underline hover:text-emerald-950
+      md:bg-transparent md:rounded md:m-0
+      md:hover:bg-transparent md:hover:underline md:hover:text-emerald-950"
   >
     {display_name}
   </a>
