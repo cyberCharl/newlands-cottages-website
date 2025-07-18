@@ -3,7 +3,7 @@ import logo from '../assets/logo.png';
 import NavItem from './NavItem.astro';
 ---
 
-<nav class="header-shadow">
+<nav class="header-shadow z-50 bg-white">
   <div
     class="max-w-screen-xl flex flex-nowrap items-center justify-between mx-auto py-4 px-2 sm:px-4"
   >
@@ -46,11 +46,11 @@ import NavItem from './NavItem.astro';
       >
     </button>
     <div
-      class="hidden absolute top-full left-0 w-full shadow-md rounded-b-xl md:static md:block md:w-auto bg-white z-40 border-t md:border-0"
+      class="hidden absolute left-0 top-full w-full shadow-md rounded-b-xl bg-white z-40 border-t md:static md:block md:w-auto md:shadow-none md:rounded-none md:bg-white md:border-0"
       id="navbar-default"
     >
       <ul
-        class="font-medium flex flex-col p-4 bg-white md:p-0 mt-0 md:mt-0 border-0 md:flex-row md:space-x-8"
+        class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white"
       >
         <NavItem href="/" display_name="Home" />
         <NavItem href="/clarkia-guest-cottage" display_name="Clarkia Cottage" />
