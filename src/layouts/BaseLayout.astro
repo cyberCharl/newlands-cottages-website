@@ -43,11 +43,11 @@ const { title, description } = Astro.props;
         card: 'summary_large_image',
         title: title,
         description: description,
-        image: 'https://www.newlandscottages.co.za/assets/front-garden-1.jpg'
+        image: 'https://www.newlandscottages.co.za/assets/front-garden-1.jpg',
       }}
     />
-    <script type="application/ld+json">
-      {JSON.stringify({
+    <script type="application/ld+json" is:inline>
+      {
         "@context": "https://schema.org",
         "@type": "GuestHouse",
         "name": "Newlands Cottages",
@@ -62,7 +62,7 @@ const { title, description } = Astro.props;
         },
         "telephone": "+27-21-6898067",
         "url": "https://www.newlandscottages.co.za"
-      })}
+      }
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -73,7 +73,8 @@ const { title, description } = Astro.props;
       type="image/png"
       href={joinWithBase(import.meta.env.BASE_URL, '/favicon.png')}
     />
-    <script defer src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js" is:inline
+    ></script>
   </head>
   <body class="flex flex-col min-h-screen bg-white text-gray-900">
     <header>
