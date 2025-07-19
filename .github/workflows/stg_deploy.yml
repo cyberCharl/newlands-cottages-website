@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages (stage)
 
 on:
   push:
-    branches: ["stage"] # Trigger only on pushes to the stage branch
+    branches: ['stage'] # Trigger only on pushes to the stage branch
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages-stage"
+  group: 'pages-stage'
   cancel-in-progress: false
 
 jobs:
@@ -23,13 +23,15 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "npm"
+          node-version: '20'
+          cache: 'npm'
       - name: Install dependencies
         run: npm install
       - name: Build with Astro
         env:
-          BASE_URL: "/newlands-cottages-website" # Set the base URL for GitHub Pages
+          SITE_URL: 'https://cyberCharl.github.io' # Set the site URL for GitHub Pages
+          BASE_URL: '/newlands-cottages-website' # Set the base URL for GitHub Pages
+
         run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
