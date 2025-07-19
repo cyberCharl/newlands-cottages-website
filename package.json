@@ -13,6 +13,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.11.0",
+    "astro-seo": "^0.8.4",
     "flowbite": "^3.1.2",
     "glightbox": "^3.3.1",
     "tailwindcss": "^4.1.11"
