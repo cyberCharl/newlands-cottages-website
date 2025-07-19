@@ -3,6 +3,7 @@ import '../styles/global.css';
 import HeaderComponent from '../components/Header.astro';
 import FooterComponent from '../components/Footer.astro';
 import { joinWithBase } from '../utils/url';
+import { SEO } from 'astro-seo';
 
 export interface Props {
   title: string;
@@ -15,6 +16,54 @@ const { title, description } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
+    <SEO
+      title={title}
+      description={description}
+      canonical={`https://www.newlandscottages.co.za${Astro.url.pathname}`}
+      openGraph={{
+        basic: {
+          title: title,
+          type: 'website',
+          image: 'https://www.newlandscottages.co.za/assets/front-garden-1.jpg',
+          url: `https://www.newlandscottages.co.za${Astro.url.pathname}`,
+        },
+        optional: {
+          description: description,
+          siteName: 'Newlands Cottages',
+        },
+        image: {
+          secureUrl: 'https://www.newlandscottages.co.za/assets/front-garden-1.jpg',
+          type: 'image/jpeg',
+          width: 1200,
+          height: 630,
+          alt: 'Front garden and facade of Newlands Cottages, Cape Town',
+        },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        title: title,
+        description: description,
+        image: 'https://www.newlandscottages.co.za/assets/front-garden-1.jpg'
+      }}
+    />
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "GuestHouse",
+        "name": "Newlands Cottages",
+        "image": "https://www.newlandscottages.co.za/assets/front-garden-1.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "39 Klipper Road, Rondebosch",
+          "addressLocality": "Cape Town",
+          "addressRegion": "Western Cape",
+          "postalCode": "7700",
+          "addressCountry": "ZA"
+        },
+        "telephone": "+27-21-6898067",
+        "url": "https://www.newlandscottages.co.za"
+      })}
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
@@ -24,10 +73,7 @@ const { title, description } = Astro.props;
       type="image/png"
       href={joinWithBase(import.meta.env.BASE_URL, '/favicon.png')}
     />
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"
-    ></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
   </head>
   <body class="flex flex-col min-h-screen bg-white text-gray-900">
     <header>
