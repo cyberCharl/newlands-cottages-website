@@ -16,6 +16,8 @@ const { title, description } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <SEO
       title={title}
       description={description}
@@ -39,12 +41,11 @@ const { title, description } = Astro.props;
           alt: 'Front garden and facade of Newlands Cottages, Cape Town',
         },
       }}
-      twitter={{
-        card: 'summary_large_image',
-        title: title,
-        description: description,
-        image: 'https://www.newlandscottages.co.za/assets/front-garden-1.jpg',
-      }}
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href={joinWithBase(import.meta.env.BASE_URL, '/favicon.png')}
     />
     <script type="application/ld+json" is:inline>
       {
@@ -64,17 +65,6 @@ const { title, description } = Astro.props;
         "url": "https://www.newlandscottages.co.za"
       }
     </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <title>{title}</title>
-    <link
-      rel="icon"
-      type="image/png"
-      href={joinWithBase(import.meta.env.BASE_URL, '/favicon.png')}
-    />
-    <script defer src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js" is:inline
-    ></script>
   </head>
   <body class="flex flex-col min-h-screen bg-white text-gray-900">
     <header>
@@ -84,5 +74,7 @@ const { title, description } = Astro.props;
       <slot />
     </main>
     <FooterComponent />
+    <script defer src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js" is:inline
+    ></script>
   </body>
 </html>
