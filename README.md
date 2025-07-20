@@ -1,47 +1,81 @@
-# Dev setup & stuff
+# Newlands Cottages Website
 
-## Dev & deployment flow
+[![Netlify Deploy Status](https://api.netlify.com/api/v1/badges/fe7fd6ac-e35a-4865-97d1-8c1fc4a31065/deploy-status)](https://app.netlify.com/projects/newlandscottages/deploys)
 
-### Branches
+A simple, fast, and responsive brochure website for Newlands Cottages guest house.
 
-(todo: Branch policies and rules setup)
-(todo: Create personal doc for standard branch policies & rules - Related to AISSA working with me doc)
+- **Production:** [https://newlandscottages.co.za/](https://newlandscottages.co.za/)
+- **Staging:** Staging environments are generated automatically for each Pull Request via Netlify Deploy Previews.
 
-`dev` branch – all commits, run locally, save progress
-* PR (squash merge) into stage to deploy to staging env
+## Tech Stack
 
-`stage` branch – deploy on PR to github pages via Github Action
-* @ [https://cybercharl.github.io/newlands-cottages-website/]()
-* PR (rebase and fast-forward) into main to deploy to live link
+- **Framework:** [Astro](https://astro.build/) (Static Site Generator)
+- **Styling:** [TailwindCSS](https://tailwindcss.com/)
+- **Components:** [Flowbite](https://flowbite.com/)
+- **Hosting:** [Netlify](https://www.netlify.com/)
 
-`main` branch – deployed to Netlify (still todo)
-* @ [https://newlandscottages.co.za/]() (still todo):
-    * Config the DNS records and set up deployment correctly
+## Getting Started
 
-### Dev ENV
+### Prerequisites
 
-- Prettier for code formatting
+- Node.js (v18 or later)
+- npm
 
-# Project Stack and Website Structure
-## Stack
+### Local Development
 
-(todo: add nice banners here for the tech used)
-* Astro static site generator
-* TailwindCSS
-* Flowbite component Library
+1.  Clone the repository:
+
+    ```bash
+    git clone https://github.com/cybercharl/newlands-cottages-website.git
+    cd newlands-cottages-website
+    ```
+
+2.  Install dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3.  Start the local development server:
+    ```bash
+    npm run dev
+    ```
+    This will start a hot-reloading development server, typically at `http://localhost:4321`.
+
+## Development and Deployment Workflow
+
+This project uses a simplified trunk-based development model (GitHub Flow).
+
+1.  **Create a Feature Branch:** All new work (features, fixes, content updates) must be done in a branch created from `main`. Use a descriptive name.
+
+    ```bash
+    # Example for a new feature
+    git checkout -b feature/add-photo-gallery
+
+    # Example for a bug fix
+    git checkout -b fix/correct-phone-number
+    ```
+
+2.  **Commit Changes:** Make your changes and commit them with clear, concise messages.
+
+3.  **Open a Pull Request:** When your work is complete, push the branch to GitHub and open a Pull Request (PR) against the `main` branch.
+
+4.  **Review and Stage:** A Netlify Deploy Preview link will be automatically generated and posted as a comment in your PR. Use this link to review your changes in a live, staging-like environment.
+
+5.  **Merge to Production:** Once the PR is approved, merge it into `main` using the **"Squash and Merge"** option on GitHub. This keeps the `main` branch history clean and atomic.
+
+6.  **Automatic Deployment:** Merging to `main` automatically triggers a production deployment via Netlify.
 
 ## Website Structure
 
-1. **Home (/)**
-
-2. **Cottage Details (/clarkia-guest-cottage)**
-
-3. **About (/about)**
-
-4. **Contact (/contact-us)**
+1.  **Home:** `/`
+2.  **Cottage Details:** `/clarkia-guest-cottage`
+3.  **About:** `/about`
+4.  **Contact:** `/contact-us`
 
 ## 🚀 Project Structure
-*{ Stuff from the Astro starter. Might still be useful later }*
+
+_{ Stuff from the Astro starter. Might still be useful later }_
 
 Inside of your Astro project, you'll see the following folders and files:
 
