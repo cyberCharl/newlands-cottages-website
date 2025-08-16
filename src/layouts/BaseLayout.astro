@@ -50,7 +50,7 @@ const { title, description } = Astro.props;
     <script type="application/ld+json" is:inline>
       {
         "@context": "https://schema.org",
-        "@type": "GuestHouse",
+        "@type": "LodgingBusiness",
         "name": "Newlands Cottages",
         "image": "https://www.newlandscottages.co.za/assets/front-garden-1.jpg",
         "address": {
@@ -62,7 +62,14 @@ const { title, description } = Astro.props;
           "addressCountry": "ZA"
         },
         "telephone": "+27-21-6898067",
-        "url": "https://www.newlandscottages.co.za"
+        "url": "https://www.newlandscottages.co.za",
+        "amenityFeature": [
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Self-catering",
+            "value": true
+          }
+        ]
       }
     </script>
   </head>
