@@ -8,8 +8,7 @@ const { heading, items } = Astro.props;
 
 <div>
   <h3 class="font-semibold text-lg mb-2">{heading}</h3>
-  <ul class="list-disc list-inside text-gray-700 space-y-1">
-    {items.map((item) => <li>{item}</li>)}
+  <ul class="list-disc pl-5 text-gray-700 space-y-1">
+    {items.map((item) => <li class="pl-2">{item}</li>)}
   </ul>
 </div>
-
