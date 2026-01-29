@@ -8,7 +8,7 @@
 
 ### **An Experience You Can Trust**
 
-Proudly recognized as a TripAdvisor Traveller's Choice destination with consistent 5-star guest reviews on Google. [View The Cottage] (/clarkia-guest-cottage) [Book Your Stay] (https://book.nightsbridge.com/12344)
+Proudly recognized as a TripAdvisor Traveller's Choice destination with consistent 5-star guest reviews on Google. [View The Cottage] (/clarkia-guest-cottage) [Book Your Stay] (https://beds24.com/booking2.php?propid=297420)
 
 ### **A Labour of Love Since 2005**
 
@@ -61,7 +61,7 @@ Clarkia Cottage is a beautifully restored 2-bedroom heritage cottage providing c
 - Private Back Patio with Weber Braai
 - Dedicated Off-street Parking Verge for one vehicle
 
-**(Primary Call to Action Section)** [Check Availability & Book Now] (https://book.nightsbridge.com/12344)
+**(Primary Call to Action Section)** [Check Availability & Book Now] (https://beds24.com/booking2.php?propid=297420)
 
 ---
 

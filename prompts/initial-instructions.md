@@ -75,7 +75,7 @@
         *   **Booking Section:**
             *   A large, centered, and highly visible button.
             *   Text: `Check Availability & Book Now`
-            *   Link: `https://book.nightsbridge.com/12344`
+            *   Link: `https://beds24.com/booking2.php?propid=297420`
             *   This button should open the link in a new tab (`target="_blank"`).
 
 Generate the code for all four files.

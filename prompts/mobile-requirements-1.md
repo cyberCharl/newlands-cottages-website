@@ -13,7 +13,7 @@
 
 2.  **Sticky "Book Now" Banner:**
     *   **Behavior:** On the `cottages.astro`page, add a sticky banner at the bottom of the viewport. This banner should be visible on mobile devices (screens with a `max-width` of `768px` or `medium` breakpoint).
-    *   **Content:** The banner should contain **only** the "Check Availability & Book Now" button, linking to `https://book.nightsbridge.com/12344` and opening in a new tab (`target="_blank"`).
+    *   **Content:** The banner should contain **only** the "Check Availability & Book Now" button, linking to `https://beds24.com/booking2.php?propid=297420` and opening in a new tab (`target="_blank"`).
     *   **Styling:** The banner should have a distinct but subtle background color, be full-width, and z-indexed above other content. Ensure it does not obstruct content unnecessarily.
     *   **Placement:** The `cottage.astro` page should still retain its original "Book Now" button within the main content for larger screens or users who scroll. The sticky banner is an *addition* for mobile UX.
 
