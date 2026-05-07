@@ -55,7 +55,8 @@ export async function verifyBeds24PaymentRequest(
   const data = await response.json();
   const invoiceItems = extractInvoiceItems(data);
   const depositItem = input.paymentType === 'deposit' ? extractDepositPaymentRequest(data, amountCents) : null;
-  const invoiceItem = depositItem ?? invoiceItems.find((item) => item.amountCents === amountCents);
+  const balanceItem = input.paymentType === 'balance' ? extractBalancePaymentRequest(data, amountCents) : null;
+  const invoiceItem = depositItem ?? balanceItem ?? invoiceItems.find((item) => item.amountCents === amountCents);
 
   if (!invoiceItem) {
     throw new Error('Payment amount does not match an unpaid Beds24 Invoice Item');
@@ -192,6 +193,70 @@ function extractDepositPaymentRequest(data: unknown, amountCents: number): Invoi
   } catch {
     return null;
   }
+}
+
+function extractBalancePaymentRequest(data: unknown, amountCents: number): InvoiceMatch | null {
+  const booking = extractFirstBooking(data);
+  if (!booking || !Array.isArray(booking.invoiceItems)) {
+    return null;
+  }
+
+  const balanceCents = booking.invoiceItems.reduce((total, item) => {
+    if (typeof item !== 'object' || item === null) {
+      return total;
+    }
+    const record = item as Record<string, unknown>;
+    const lineTotal = record.lineTotal ?? record.amount;
+    if (typeof lineTotal !== 'string' && typeof lineTotal !== 'number') {
+      return total;
+    }
+
+    try {
+      return total + normalizeSignedAmountToCents(String(lineTotal));
+    } catch {
+      return total;
+    }
+  }, 0);
+
+  if (balanceCents !== amountCents) {
+    return null;
+  }
+
+  return {
+    reference: `booking-balance:${String(booking.id ?? 'unknown')}`,
+    amountCents: balanceCents,
+    description: 'Beds24 booking balance',
+  };
+}
+
+function normalizeSignedAmountToCents(value: string): number {
+  const trimmed = value.trim();
+  if (!trimmed) {
+    throw new Error('Missing amount');
+  }
+
+  const withoutCurrency = trimmed.replace(/[^\d.,-]/g, '');
+  const normalized = normalizeSignedDecimalSeparator(withoutCurrency);
+  const parsed = Number(normalized);
+  if (!Number.isFinite(parsed)) {
+    throw new Error('Invalid amount');
+  }
+
+  return Math.round(parsed * 100);
+}
+
+function normalizeSignedDecimalSeparator(value: string): string {
+  const lastDot = value.lastIndexOf('.');
+  const lastComma = value.lastIndexOf(',');
+
+  if (lastDot === -1 && lastComma === -1) {
+    return value;
+  }
+
+  const decimalIndex = Math.max(lastDot, lastComma);
+  const integerPart = value.slice(0, decimalIndex).replace(/[.,]/g, '');
+  const decimalPart = value.slice(decimalIndex + 1).replace(/[.,]/g, '');
+  return `${integerPart}.${decimalPart}`;
 }
 
 function extractFirstBooking(data: unknown): Record<string, unknown> | null {

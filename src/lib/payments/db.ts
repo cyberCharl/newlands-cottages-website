@@ -112,6 +112,27 @@ export async function getPaymentRequestByCheckoutId(
     .first<PaymentRequestRecord>();
 }
 
+export async function getCompletedDepositPaymentRequest(
+  env: Env,
+  bookid: string,
+  propertyId: string,
+  amountCents: number,
+): Promise<PaymentRequestRecord | null> {
+  return env.DB.prepare(
+    `SELECT *
+    FROM payment_requests
+    WHERE beds24_bookid = ?
+      AND beds24_property_id = ?
+      AND payment_type = 'deposit'
+      AND amount_cents = ?
+      AND status IN ('paid', 'reconciled', 'unreconciled')
+    ORDER BY updated_at DESC
+    LIMIT 1`,
+  )
+    .bind(bookid, propertyId, amountCents)
+    .first<PaymentRequestRecord>();
+}
+
 export async function attachCheckout(
   env: Env,
   id: string,

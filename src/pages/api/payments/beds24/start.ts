@@ -3,8 +3,15 @@ import { normalizeAmountToCents } from '../../../../lib/payments/amount';
 import { parseBeds24PaymentRequest, verifyBeds24PaymentRequest } from '../../../../lib/payments/beds24';
 import { getEnv, getOrigin, isCaptureMode } from '../../../../lib/payments/config';
 import { sha256Hex } from '../../../../lib/payments/crypto';
-import { attachCheckout, insertCaptureOnly, upsertVerifiedPaymentRequest } from '../../../../lib/payments/db';
+import {
+  attachCheckout,
+  getCompletedDepositPaymentRequest,
+  getPaymentRequestByFingerprint,
+  insertCaptureOnly,
+  upsertVerifiedPaymentRequest,
+} from '../../../../lib/payments/db';
 import { badRequest, escapeHtml, html, methodNotAllowed } from '../../../../lib/payments/http';
+import type { Beds24PaymentRequestInput, PaymentStatus } from '../../../../lib/payments/types';
 import { createYocoCheckout } from '../../../../lib/payments/yoco';
 
 export const prerender = false;
@@ -14,14 +21,21 @@ export const POST: APIRoute = async (context) => {
   const formData = await context.request.formData();
 
   try {
-    const input = parseBeds24PaymentRequest(formData);
+    let input = parseBeds24PaymentRequest(formData);
     const amountCents = normalizeAmountToCents(input.amount);
+    input = await inferBalanceRequest(env, input, amountCents);
+
     const baseFingerprint = `${input.bookid}:${input.propertyId}:${input.paymentType}:${amountCents}`;
     const fingerprint = await sha256Hex(baseFingerprint);
 
     if (isCaptureMode(env)) {
       const record = await insertCaptureOnly(env, input, amountCents, fingerprint);
       return html(capturePage(record.id, input.rawFields));
+    }
+
+    const existing = await getPaymentRequestByFingerprint(env, fingerprint);
+    if (existing && isCompletedStatus(existing.status)) {
+      return Response.redirect(`/payments/success?id=${encodeURIComponent(existing.id)}`, 303);
     }
 
     const verification = await verifyBeds24PaymentRequest(env, input, amountCents);
@@ -50,6 +64,37 @@ export const POST: APIRoute = async (context) => {
 };
 
 export const ALL: APIRoute = async () => methodNotAllowed();
+
+async function inferBalanceRequest(
+  env: ReturnType<typeof getEnv>,
+  input: Beds24PaymentRequestInput,
+  amountCents: number,
+): Promise<Beds24PaymentRequestInput> {
+  if (input.paymentType !== 'deposit') {
+    return input;
+  }
+
+  const completedDeposit = await getCompletedDepositPaymentRequest(env, input.bookid, input.propertyId, amountCents);
+  if (!completedDeposit) {
+    return input;
+  }
+
+  return {
+    ...input,
+    paymentType: 'balance',
+    description: `Balance Payment for Newlands Cottages booking ${input.bookid}`,
+    rawFields: {
+      ...input.rawFields,
+      inferred_payment_type: 'balance',
+      original_payment_type: input.rawFields.payment_type,
+      original_description: input.rawFields.description || '',
+    },
+  };
+}
+
+function isCompletedStatus(status: PaymentStatus): boolean {
+  return status === 'paid' || status === 'reconciled' || status === 'unreconciled';
+}
 
 function capturePage(id: string, fields: Record<string, string>): string {
   const rows = Object.entries(fields)

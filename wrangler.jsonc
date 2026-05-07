@@ -18,13 +18,8 @@
 		{
 			"binding": "DB",
 			"database_name": "newlands-cottages-payments",
-			"database_id": "replace-with-cloudflare-d1-database-id",
+			"database_id": "e45f22c3-33f9-42fd-96df-77b075983279",
 			"migrations_dir": "migrations"
-		},
-		{
-			"binding": "newlands_cottages_payments",
-			"database_name": "newlands-cottages-payments",
-			"database_id": "e45f22c3-33f9-42fd-96df-77b075983279"
 		}
 	],
 	"vars": {
@@ -33,7 +28,7 @@
 		"BEDS24_SUCCESS_PAYMENT_STATUS": "paid",
 		"OPERATOR_EMAIL": "info@clarkia.co.za",
 		"ALERT_FROM_EMAIL": "Newlands Cottages <payments@newlandscottages.co.za>",
-		"BEDS24_CONFIRMATION_URL": "https://newlandscottages.co.za/",
-		"CAPTURE_MODE": "true"
+		"BEDS24_CONFIRMATION_URL": "https://beds24.com/booking.php?page=bookconfirmed",
+		"CAPTURE_MODE": "false"
 	}
 }
