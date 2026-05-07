@@ -1,17 +1,39 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "newlands-cottages-website",
-  "compatibility_date": "2026-05-07",
-  "observability": {
-    "enabled": true
-  },
-  "main": "dist/_worker.js/index.js",
-  "compatibility_flags": [
-    "global_fetch_strictly_public",
-    "nodejs_compat"
-  ],
-  "assets": {
-    "binding": "ASSETS",
-    "directory": "dist"
-  }
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "newlands-cottages-website",
+	"compatibility_date": "2026-05-07",
+	"observability": {
+		"enabled": true
+	},
+	"main": "dist/_worker.js/index.js",
+	"compatibility_flags": [
+		"global_fetch_strictly_public",
+		"nodejs_compat"
+	],
+	"assets": {
+		"binding": "ASSETS",
+		"directory": "dist"
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "newlands-cottages-payments",
+			"database_id": "replace-with-cloudflare-d1-database-id",
+			"migrations_dir": "migrations"
+		},
+		{
+			"binding": "newlands_cottages_payments",
+			"database_name": "newlands-cottages-payments",
+			"database_id": "e45f22c3-33f9-42fd-96df-77b075983279"
+		}
+	],
+	"vars": {
+		"BEDS24_API_URL": "https://api.beds24.com/v2/bookings",
+		"BEDS24_NOTIFY_URL": "https://api.beds24.com/custompaymentgateway/notify.php",
+		"BEDS24_SUCCESS_PAYMENT_STATUS": "paid",
+		"OPERATOR_EMAIL": "info@clarkia.co.za",
+		"ALERT_FROM_EMAIL": "Newlands Cottages <payments@newlandscottages.co.za>",
+		"BEDS24_CONFIRMATION_URL": "https://newlandscottages.co.za/",
+		"CAPTURE_MODE": "true"
+	}
 }
