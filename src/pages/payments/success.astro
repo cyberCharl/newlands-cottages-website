@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export const prerender = false;
+
+const id = Astro.url.searchParams.get('id') ?? '';
+const locals = Astro.locals as { runtime?: { env?: { BEDS24_CONFIRMATION_URL?: string } } };
+const runtime = locals.runtime;
+const confirmationUrl = runtime?.env?.BEDS24_CONFIRMATION_URL ?? '';
+---
+
+<BaseLayout
+  title="Payment processing | Newlands Cottages"
+  description="Your Newlands Cottages payment is being reconciled."
+>
+  <section class="bg-[#f7f4ef] py-16 sm:py-24">
+    <div class="mx-auto max-w-2xl px-6">
+      <h1 class="text-3xl font-semibold tracking-normal text-gray-900 sm:text-4xl">Payment received</h1>
+      <p id="payment-status-message" class="mt-5 text-lg leading-8 text-gray-700">
+        We are confirming the payment with Beds24. This usually takes a few seconds.
+      </p>
+      <div class="mt-8 h-2 overflow-hidden rounded-full bg-white ring-1 ring-gray-200">
+        <div id="payment-progress" class="h-full w-1/4 bg-teal-700 transition-all duration-500"></div>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline define:vars={{ id, confirmationUrl }}>
+    const message = document.getElementById('payment-status-message');
+    const progress = document.getElementById('payment-progress');
+    const startedAt = Date.now();
+    const timeoutMs = 20000;
+
+    async function poll() {
+      if (!id) {
+        message.textContent = 'We could not find the payment reference. Please contact Newlands Cottages.';
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/payments/status/${encodeURIComponent(id)}`);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.reconciled) {
+            message.textContent = 'Payment confirmed. Redirecting you back to your booking confirmation.';
+            progress.style.width = '100%';
+            if (confirmationUrl) {
+              window.location.href = confirmationUrl;
+            }
+            return;
+          }
+        }
+      } catch {
+        // Keep polling until the visible timeout. The webhook may still arrive.
+      }
+
+      const elapsed = Date.now() - startedAt;
+      progress.style.width = `${Math.min(95, 25 + (elapsed / timeoutMs) * 70)}%`;
+      if (elapsed < timeoutMs) {
+        window.setTimeout(poll, 2000);
+      } else {
+        message.textContent =
+          'Your payment is still being reconciled. Please do not pay again unless Newlands Cottages asks you to.';
+      }
+    }
+
+    poll();
+  </script>
+</BaseLayout>
