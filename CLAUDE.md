@@ -13,7 +13,7 @@ A brochure website for Newlands Cottages guest house in Cape Town. Built with As
 
 ### Tech Stack
 
-- **Astro 5** - Static site generator with `.astro` component format
+- **Astro 7** - Static site generator with `.astro` component format
 - **TailwindCSS 4** - Configured via `@tailwindcss/vite` plugin in astro.config.mjs
 - **Flowbite** - UI component library loaded via CDN in BaseLayout.astro
 
