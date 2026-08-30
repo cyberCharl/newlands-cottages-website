@@ -3,6 +3,7 @@ import AmenitiesSection from '../components/AmenitiesSection.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookBanner from '../components/BookBanner.astro';
 import ImageCarousel from '../components/ImageCarousel.astro';
+import LodgifyBooking from '../components/LodgifyBooking.astro';
 
 // Image imports
 import frontGarden2 from '../assets/front-garden-2.jpg';
@@ -110,21 +111,7 @@ let image_list = [
         />
       </div>
     </section>
-    <section class="flex justify-center">
-      <a
-        href="https://beds24.com/booking2.php?propid=297420"
-        target="_blank"
-        rel="noopener"
-        class="w-full sm:w-auto"
-        id="main-booking-btn"
-      >
-        <button type="button" class="btn btn-primary w-full sm:w-auto text-lg px-8 py-4">
-          Check Availability & Book Now
-        </button>
-      </a>
-    </section>
   </div>
+  <LodgifyBooking />
+  <BookBanner />
 </BaseLayout>
-
-<!-- Sticky Book Now Banner -->
-<BookBanner />

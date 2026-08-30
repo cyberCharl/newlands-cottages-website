@@ -1,0 +1,119 @@
+---
+import { joinWithBase } from '../utils/url';
+
+const contactUrl = joinWithBase(import.meta.env.BASE_URL, '/contact-us');
+---
+
+<section
+  id="book-your-stay"
+  class="scroll-mt-28 max-w-5xl mx-auto px-4 pb-8 sm:pb-12"
+  aria-labelledby="booking-heading"
+>
+  <div
+    class="lodgify-booking-card relative rounded-[1.75rem] border border-emerald-900/10 bg-[#f4f1e8] px-4 py-6 shadow-[0_24px_70px_rgba(0,39,30,0.12)] sm:px-8 sm:py-9"
+  >
+    <div class="relative mb-5 max-w-2xl sm:mb-7">
+      <p class="mb-2 text-xs font-semibold uppercase tracking-[0.22em] text-emerald-800">
+        Direct booking
+      </p>
+      <h2 id="booking-heading" class="text-2xl font-semibold text-emerald-950 sm:text-3xl">
+        Find your dates at Clarkia Cottage
+      </h2>
+      <p class="mt-2 text-sm leading-relaxed text-stone-600 sm:text-base">
+        Check live availability and book securely with Lodgify.
+      </p>
+    </div>
+
+    <div class="rounded-2xl border border-white/80 bg-white/85 p-2 shadow-sm sm:p-3">
+      <div
+        id="lodgify-book-now-box"
+        data-rental-id="831630"
+        data-website-id="668924"
+        data-slug="susanne-botha"
+        data-language-code="en"
+        data-new-tab="false"
+        data-version="stable"
+        data-has-guests-breakdown
+        data-check-in-label="Check-in"
+        data-check-out-label="Check-out"
+        data-guests-label="Guests"
+        data-guests-singular-label="{{NumberOfGuests}} guest"
+        data-guests-plural-label="{{NumberOfGuests}} guests"
+        data-location-input-label="Location"
+        data-total-price-label="Total price:"
+        data-select-dates-to-see-price-label="Select dates to see total price"
+        data-minimum-price-per-night-first-label="From"
+        data-minimum-price-per-night-second-label="per night"
+        data-book-button-label="Book Now"
+        data-guests-breakdown-label="Guests"
+        data-adults-label='{"one":"adult","other":"adults"}'
+        data-adults-description="Ages {minAge} or above"
+        data-children-label='{"one":"child","other":"children"}'
+        data-children-description="Ages {minAge}-{maxAge}"
+        data-children-not-allowed-label="Not suitable for children"
+        data-infants-label='{"one":"infant","other":"infants"}'
+        data-infants-description="Under {maxAge}"
+        data-infants-not-allowed-label="Not suitable for infants"
+        data-pets-label='{"one":"pet","other":"pets"}'
+        data-pets-not-allowed-label="Not allowed"
+        data-done-label="Done"
+      >
+      </div>
+
+      <noscript>
+        <p class="p-4 text-center text-sm text-stone-700">
+          Online booking requires JavaScript. Please
+          <a class="font-semibold text-emerald-900 underline" href={contactUrl}>contact us</a>
+          to make a reservation.
+        </p>
+      </noscript>
+    </div>
+
+    <p class="mt-4 text-center text-xs text-stone-500">
+      Having trouble with the booking box?
+      <a class="font-medium text-emerald-900 underline underline-offset-2" href={contactUrl}>
+        Contact us directly
+      </a>
+    </p>
+  </div>
+</section>
+
+<script is:inline src="https://app.lodgify.com/book-now-box/stable/renderBookNowBox.js" defer
+></script>
+
+<style is:global>
+  :root {
+    --ldg-bnb-background: #ffffff;
+    --ldg-bnb-border-radius: 0.75rem;
+    --ldg-bnb-box-shadow: none;
+    --ldg-bnb-padding: 14px;
+    --ldg-bnb-input-background: #ffffff;
+    --ldg-bnb-button-border-radius: 999px;
+    --ldg-bnb-color-primary: #004e3b;
+    --ldg-bnb-color-primary-lighter: #80a79d;
+    --ldg-bnb-color-primary-darker: #00271e;
+    --ldg-bnb-color-primary-contrast: #feffff;
+    --ldg-component-calendar-cell-selection-bg-color: #004e3b;
+    --ldg-component-calendar-cell-selection-color: #feffff;
+    --ldg-component-calendar-cell-selected-bg-color: #80a79d;
+    --ldg-component-calendar-cell-selected-color: #feffff;
+    --ldg-bnb-font-family: inherit;
+  }
+
+  #lodgify-book-now-box {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 7.5rem;
+  }
+
+  @media (max-width: 640px) {
+    #lodgify-book-now-box {
+      min-height: 18rem;
+    }
+
+    .lodgify-booking-card {
+      border-radius: 1.25rem;
+    }
+  }
+</style>

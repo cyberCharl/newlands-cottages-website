@@ -1,8 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
-import cloudflare from '@astrojs/cloudflare';
-
 const SITE_URL =
   process.env.SITE_URL ??
   (process.env.CONTEXT === 'production' ? process.env.URL : process.env.DEPLOY_PRIME_URL);
@@ -13,13 +11,7 @@ export default defineConfig({
 
   base: process.env.BASE_URL ?? '/',
 
-  security: {
-    checkOrigin: false,
-  },
-
   vite: {
     plugins: [tailwindcss()],
   },
-
-  adapter: cloudflare(),
 });

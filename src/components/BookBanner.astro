@@ -1,25 +1,18 @@
 <div
   id="book-banner"
-  tabindex="-1"
   class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg flex items-center px-4 py-3"
 >
   <div class="flex-1">
-    <a
-      href="https://beds24.com/booking2.php?propid=297420"
-      target="_blank"
-      rel="noopener"
-      class="flex-1"
-    >
-      <button type="button" class="btn btn-primary w-full text-base">
-        Check Availability & Book Now
-      </button>
+    <a href="#book-your-stay" class="btn block w-full text-center text-base">
+      Check Availability & Book Now
     </a>
   </div>
   <div class="flex-none">
     <button
       type="button"
-      data-dismiss-target="#book-banner"
+      id="dismiss-book-banner"
       class="inline-flex justify-center w-7 h-7 items-center text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 dark:hover:bg-gray-600 dark:hover:text-white"
+      aria-label="Close booking banner"
     >
       <svg
         class="w-3 h-3"
@@ -35,7 +28,6 @@
           stroke-width="2"
           d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"></path>
       </svg>
-      <span class="sr-only">Close banner</span>
     </button>
   </div>
 </div>
@@ -43,18 +35,22 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const banner = document.getElementById('book-banner');
-    const bookingBtn = document.getElementById('main-booking-btn');
+    const bookingSection = document.getElementById('book-your-stay');
+    const dismissButton = document.getElementById('dismiss-book-banner');
 
-    if (!banner || !bookingBtn) return;
+    if (!banner || !bookingSection || !dismissButton) return;
+
+    let dismissed = false;
+
+    dismissButton.addEventListener('click', () => {
+      dismissed = true;
+      banner.style.display = 'none';
+    });
 
     function handleIntersect(entries: IntersectionObserverEntry[]) {
       entries.forEach((entry: IntersectionObserverEntry) => {
         if (!banner) return;
-        if (entry.isIntersecting) {
-          banner.style.display = 'none';
-        } else {
-          banner.style.display = '';
-        }
+        banner.style.display = dismissed || entry.isIntersecting ? 'none' : 'flex';
       });
     }
 
@@ -63,7 +59,7 @@
       threshold: 0.1,
     });
 
-    observer.observe(bookingBtn);
+    observer.observe(bookingSection);
     window.addEventListener('beforeunload', () => observer.disconnect());
   });
 </script>
